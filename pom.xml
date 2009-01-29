@@ -17,6 +17,26 @@
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <useFile>false</useFile>
+          <includes>
+            <include>**/*Spec.java</include>
+          </includes>
+          <systemProperties>
+            <property>
+              <name>jdave.tools.specdox.format</name>
+              <value>xml</value>
+            </property>
+            <property>
+              <name>jdave.tools.specdox.dir</name>
+              <value>target/jdave</value>
+            </property>
+          </systemProperties>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <repositories>
