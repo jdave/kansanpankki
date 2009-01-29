@@ -1,107 +1,222 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
-<project version="4" relativePaths="false"> 
-  <component name="ProjectRootManager" version="2" assert-keyword="true" project-jdk-name="1.5" jdk-15="true"/>  
-  <component name="CodeStyleManager"> 
-    <option name="USE_DEFAULT_CODE_STYLE_SCHEME" value="true"/>  
-    <option name="CODE_STYLE_SCHEME" value=""/> 
-  </component>  
-  <component name="libraryTable"/>  
-  <component name="CompilerConfiguration"> 
-    <option name="DEFAULT_COMPILER" value="Javac"/>  
-    <option name="CLEAR_OUTPUT_DIRECTORY" value="false"/>  
-    <!--
+<project relativePaths="false" version="4">
+  <component name="AntConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="BuildJarProjectSettings">
+    <option name="BUILD_JARS_ON_MAKE" value="false" />
+  </component>
+  <component name="CodeStyleManager">
+    <option name="USE_DEFAULT_CODE_STYLE_SCHEME" value="true" />
+    <option name="CODE_STYLE_SCHEME" value="" />
+  </component>
+  <component name="CodeStyleSettingsManager">
+    <option name="PER_PROJECT_SETTINGS" />
+    <option name="USE_PER_PROJECT_SETTINGS" value="false" />
+  </component>
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <option name="DEPLOY_AFTER_MAKE" value="0" />
+    <resourceExtensions />
     <wildcardResourcePatterns>
-      <entry name="${wildcardResourcePattern}"/>
+      <entry name="!?*.java" />
     </wildcardResourcePatterns>
-    -->  
-    <wildcardResourcePatterns>
-      <entry name="!?*.java"/>
-    </wildcardResourcePatterns>
-  </component>  
-  <component name="JavacSettings"> 
-    <option name="DEBUGGING_INFO" value="true"/>  
-    <option name="GENERATE_NO_WARNINGS" value="false"/>  
-    <option name="DEPRECATION" value="true"/>  
-    <option name="ADDITIONAL_OPTIONS_STRING" value=""/>  
-    <option name="MAXIMUM_HEAP_SIZE" value="128"/>  
-    <option name="USE_GENERICS_COMPILER" value="false"/> 
-  </component>  
-  <component name="JikesSettings"> 
-    <option name="DEBUGGING_INFO" value="true"/>  
-    <option name="DEPRECATION" value="true"/>  
-    <option name="GENERATE_NO_WARNINGS" value="false"/>  
-    <option name="GENERATE_MAKE_FILE_DEPENDENCIES" value="false"/>  
-    <option name="DO_FULL_DEPENDENCE_CHECK" value="false"/>  
-    <option name="IS_INCREMENTAL_MODE" value="false"/>  
-    <option name="IS_EMACS_ERRORS_MODE" value="true"/>  
-    <option name="ADDITIONAL_OPTIONS_STRING" value=""/>  
-    <option name="MAXIMUM_HEAP_SIZE" value="128"/> 
-  </component>  
-  <component name="AntConfiguration"> 
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false"/>  
-    <option name="FILTER_TARGETS" value="false"/> 
-  </component>  
-  <component name="JavadocGenerationManager"> 
-    <option name="OUTPUT_DIRECTORY"/>  
-    <option name="OPTION_SCOPE" value="protected"/>  
-    <option name="OPTION_HIERARCHY" value="false"/>  
-    <option name="OPTION_NAVIGATOR" value="false"/>  
-    <option name="OPTION_INDEX" value="false"/>  
-    <option name="OPTION_SEPARATE_INDEX" value="false"/>  
-    <option name="OPTION_USE_1_1" value="false"/>  
-    <option name="OPTION_DOCUMENT_TAG_USE" value="false"/>  
-    <option name="OPTION_DOCUMENT_TAG_AUTHOR" value="false"/>  
-    <option name="OPTION_DOCUMENT_TAG_VERSION" value="false"/>  
-    <option name="OPTION_DOCUMENT_TAG_DEPRECATED" value="false"/>  
-    <option name="OPTION_DEPRECATED_LIST" value="false"/>  
-    <option name="OTHER_OPTIONS"/>  
-    <option name="HEAP_SIZE"/>  
-    <option name="OPEN_IN_BROWSER" value="false"/> 
-  </component>  
-  <component name="JUnitProjectSettings"> 
-    <option name="TEST_RUNNER" value="UI"/> 
-  </component>  
-  <component name="EntryPointsManager"> 
-    <entry_points/> 
-  </component>  
-  <component name="DataSourceManager"/>  
-  <component name="ExportToHTMLSettings"> 
-    <option name="PRINT_LINE_NUMBERS" value="false"/>  
-    <option name="OPEN_IN_BROWSER" value="false"/>  
-    <option name="OUTPUT_DIRECTORY"/> 
-  </component>  
-  <component name="ImportConfiguration"> 
-    <option name="VENDOR"/>  
-    <option name="RELEASE_TAG"/>  
-    <option name="LOG_MESSAGE"/>  
-    <option name="CHECKOUT_AFTER_IMPORT" value="true"/> 
-  </component>  
-  <component name="ProjectModuleManager"> 
-    <modules> 
-      <!-- module filepath="$$PROJECT_DIR$$/${pom.artifactId}.iml"/ -->  
-      <module filepath="$PROJECT_DIR$/kansanpankki.iml"/>
-    </modules> 
-  </component>  
-  <UsedPathMacros> 
-    <!--<macro name="cargo"></macro>--> 
-  </UsedPathMacros> 
+  </component>
+  <component name="CopyrightManager" default="">
+    <module2copyright />
+  </component>
+  <component name="DependencyValidationManager">
+    <option name="SKIP_IMPORT_STATEMENTS" value="false" />
+  </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="EntryPointsManager">
+    <entry_points />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="PRINT_LINE_NUMBERS" value="false" />
+    <option name="OPEN_IN_BROWSER" value="false" />
+    <option name="OUTPUT_DIRECTORY" />
+  </component>
+  <component name="ImportConfiguration">
+    <option name="VENDOR" />
+    <option name="RELEASE_TAG" />
+    <option name="LOG_MESSAGE" />
+    <option name="CHECKOUT_AFTER_IMPORT" value="true" />
+  </component>
+  <component name="InspectionProjectProfileManager">
+    <option name="PROJECT_PROFILE" value="Project Default" />
+    <option name="USE_PROJECT_LEVEL_SETTINGS" value="false" />
+    <scopes />
+    <profiles>
+      <profile version="1.0" is_locked="false">
+        <option name="myName" value="Project Default" />
+        <option name="myLocal" value="false" />
+        <inspection_tool class="SystemOutErr" level="ERROR" enabled="true" />
+        <inspection_tool class="HtmlUnknownAttribute" level="WARNING" enabled="true">
+          <option name="myValues">
+            <value>
+              <list size="6">
+                <item index="0" class="java.lang.String" itemvalue="type" />
+                <item index="1" class="java.lang.String" itemvalue="wmode" />
+                <item index="2" class="java.lang.String" itemvalue="src" />
+                <item index="3" class="java.lang.String" itemvalue="width" />
+                <item index="4" class="java.lang.String" itemvalue="height" />
+                <item index="5" class="java.lang.String" itemvalue="wicket:id" />
+              </list>
+            </value>
+          </option>
+          <option name="myCustomValuesEnabled" value="true" />
+        </inspection_tool>
+        <inspection_tool class="JpaDataSourceORMInspection" level="ERROR" enabled="false" />
+        <inspection_tool class="JpaModelErrorInspection" level="ERROR" enabled="false" />
+        <inspection_tool class="UNUSED_SYMBOL" level="WARNING" enabled="true">
+          <option name="LOCAL_VARIABLE" value="true" />
+          <option name="FIELD" value="true" />
+          <option name="METHOD" value="true" />
+          <option name="CLASS" value="true" />
+          <option name="PARAMETER" value="true" />
+          <option name="REPORT_PARAMETER_FOR_PUBLIC_METHODS" value="true" />
+          <option name="INJECTION_ANNOS">
+            <value>
+              <list size="3">
+                <item index="0" class="java.lang.String" itemvalue="com.google.inject.Inject" />
+                <item index="1" class="java.lang.String" itemvalue="org.apache.wicket.spring.injection.annot.SpringBean" />
+                <item index="2" class="java.lang.String" itemvalue="salve.depend.Dependency" />
+              </list>
+            </value>
+          </option>
+        </inspection_tool>
+        <inspection_tool class="MissingOverrideAnnotation" level="ERROR" enabled="true" />
+        <inspection_tool class="CloneableImplementsClone" level="WARNING" enabled="true">
+          <option name="m_ignoreCloneableDueToInheritance" value="false" />
+        </inspection_tool>
+        <inspection_tool class="UnnecessaryThis" level="WARNING" enabled="true" />
+        <inspection_tool class="JpaQueryApiInspection" level="ERROR" enabled="false" />
+        <inspection_tool class="HibernateMappingDatasourceDomInspection" level="ERROR" enabled="false" />
+        <inspection_tool class="HibernateMappingDomInspection" level="ERROR" enabled="false" />
+        <inspection_tool class="RawUseOfParameterizedType" level="WARNING" enabled="true">
+          <option name="ignoreObjectConstruction" value="false" />
+          <option name="ignoreTypeCasts" value="false" />
+        </inspection_tool>
+        <inspection_tool class="JavaDoc" level="WARNING" enabled="false">
+          <option name="TOP_LEVEL_CLASS_OPTIONS">
+            <value>
+              <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
+              <option name="REQUIRED_TAGS" value="" />
+            </value>
+          </option>
+          <option name="INNER_CLASS_OPTIONS">
+            <value>
+              <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
+              <option name="REQUIRED_TAGS" value="" />
+            </value>
+          </option>
+          <option name="METHOD_OPTIONS">
+            <value>
+              <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
+              <option name="REQUIRED_TAGS" value="@return@param@throws or @exception" />
+            </value>
+          </option>
+          <option name="FIELD_OPTIONS">
+            <value>
+              <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
+              <option name="REQUIRED_TAGS" value="" />
+            </value>
+          </option>
+          <option name="IGNORE_DEPRECATED" value="false" />
+          <option name="IGNORE_JAVADOC_PERIOD" value="true" />
+          <option name="myAdditionalJavadocTags" value="" />
+        </inspection_tool>
+        <inspection_tool class="SerialVersionUIDNotStaticFinal" level="WARNING" enabled="true" />
+        <inspection_tool class="NonSerializableWithSerialVersionUIDField" level="WARNING" enabled="true" />
+        <inspection_tool class="SamePackageImport" level="WARNING" enabled="true" />
+        <inspection_tool class="JavaLangImport" level="WARNING" enabled="true" />
+        <inspection_tool class="RedundantImport" level="WARNING" enabled="true" />
+        <inspection_tool class="UnusedImport" level="WARNING" enabled="true" />
+        <inspection_tool class="InjectOfNonPublicMember" level="WARNING" enabled="false" />
+        <inspection_tool class="PointlessBinding" level="WARNING" enabled="false" />
+        <inspection_tool class="SimplifiableIfStatement" level="WARNING" enabled="false" />
+        <inspection_tool class="HtmlUnknownTag" level="WARNING" enabled="true">
+          <option name="myValues">
+            <value>
+              <list size="6">
+                <item index="0" class="java.lang.String" itemvalue="embed" />
+                <item index="1" class="java.lang.String" itemvalue="nobr" />
+                <item index="2" class="java.lang.String" itemvalue="noembed" />
+                <item index="3" class="java.lang.String" itemvalue="comment" />
+                <item index="4" class="java.lang.String" itemvalue="script" />
+                <item index="5" class="java.lang.String" itemvalue="wicket:container" />
+              </list>
+            </value>
+          </option>
+          <option name="myCustomValuesEnabled" value="true" />
+        </inspection_tool>
+        <inspection_tool class="StringConstructor" level="WARNING" enabled="false">
+          <option name="ignoreSubstringArguments" value="false" />
+        </inspection_tool>
+      </profile>
+    </profiles>
+    <list size="0" />
+  </component>
+  <component name="JUnitProjectSettings">
+    <option name="TEST_RUNNER" value="UI" />
+  </component>
+  <component name="JavacSettings">
+    <option name="DEBUGGING_INFO" value="true" />
+    <option name="GENERATE_NO_WARNINGS" value="false" />
+    <option name="DEPRECATION" value="true" />
+    <option name="ADDITIONAL_OPTIONS_STRING" value="" />
+    <option name="MAXIMUM_HEAP_SIZE" value="128" />
+    <option name="USE_GENERICS_COMPILER" value="false" />
+  </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" />
+    <option name="OPTION_SCOPE" value="protected" />
+    <option name="OPTION_HIERARCHY" value="false" />
+    <option name="OPTION_NAVIGATOR" value="false" />
+    <option name="OPTION_INDEX" value="false" />
+    <option name="OPTION_SEPARATE_INDEX" value="false" />
+    <option name="OPTION_DOCUMENT_TAG_USE" value="false" />
+    <option name="OPTION_DOCUMENT_TAG_AUTHOR" value="false" />
+    <option name="OPTION_DOCUMENT_TAG_VERSION" value="false" />
+    <option name="OPTION_DOCUMENT_TAG_DEPRECATED" value="false" />
+    <option name="OPTION_DEPRECATED_LIST" value="false" />
+    <option name="OTHER_OPTIONS" />
+    <option name="HEAP_SIZE" />
+    <option name="LOCALE" />
+    <option name="OPEN_IN_BROWSER" value="false" />
+  </component>
+  <component name="JikesSettings">
+    <option name="DEBUGGING_INFO" value="true" />
+    <option name="DEPRECATION" value="true" />
+    <option name="GENERATE_NO_WARNINGS" value="false" />
+    <option name="GENERATE_MAKE_FILE_DEPENDENCIES" value="false" />
+    <option name="DO_FULL_DEPENDENCE_CHECK" value="false" />
+    <option name="IS_INCREMENTAL_MODE" value="false" />
+    <option name="IS_EMACS_ERRORS_MODE" value="true" />
+    <option name="ADDITIONAL_OPTIONS_STRING" value="" />
+    <option name="MAXIMUM_HEAP_SIZE" value="128" />
+  </component>
+  <component name="ProjectDetails">
+    <option name="projectName" value="kansanpankki" />
+  </component>
+  <component name="ProjectFileVersion" converted="true" />
+  <component name="ProjectKey">
+    <option name="state" value="http://www.laughingpanda.org/svn/kansanpankki/trunk/kansanpankki.ipr" />
+  </component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/kansanpankki.iml" filepath="$PROJECT_DIR$/kansanpankki.iml" />
+    </modules>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.5" />
+  <component name="SvnBranchConfigurationManager">
+    <option name="myVersion" value="124" />
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="svn" />
+  </component>
 </project>
+
