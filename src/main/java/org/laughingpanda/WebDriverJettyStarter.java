@@ -3,7 +3,6 @@ package org.laughingpanda;
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.nio.SelectChannelConnector;
 
-
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
