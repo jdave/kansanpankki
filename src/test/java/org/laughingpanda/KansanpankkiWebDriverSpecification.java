@@ -23,8 +23,4 @@ public class KansanpankkiWebDriverSpecification<T> extends Specification<T> {
     public boolean textContainsInPage(String text) {
         return WebDriverHolder.get().getPageSource().contains(text);
     }
-    
-    @Override
-    public void destroy() throws Exception {
-    }
 }
