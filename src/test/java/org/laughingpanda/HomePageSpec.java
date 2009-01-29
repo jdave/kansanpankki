@@ -6,6 +6,9 @@ import jdave.wicket.ComponentSpecification;
 import org.apache.wicket.model.IModel;
 import org.junit.runner.RunWith;
 
+/**
+ * @author Markus Hjort / Reaktor Innovations Oy
+ */
 @RunWith(JDaveRunner.class)
 public class HomePageSpec extends ComponentSpecification<HomePage> {
 	public class Any {
