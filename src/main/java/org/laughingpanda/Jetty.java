@@ -14,7 +14,7 @@ public class Jetty {
     private static final String WAR = "src/main/webapp";
 	private Server server;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String... args) throws Exception {
         new Jetty().start();
     }
     
