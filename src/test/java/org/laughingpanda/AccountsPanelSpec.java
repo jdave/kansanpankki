@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 
 /**
  * @author Markus Hjort / Reaktor Innovations Oy
+ * @author Marko Sibakov / Reaktor Innovations Oy
  */
 @RunWith(JDaveRunner.class)
 public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Void> {
