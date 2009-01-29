@@ -16,7 +16,8 @@ public class HomePageSpec extends ComponentSpecification<HomePage, Void> {
 			return startComponent();
 		}
 		
-		public void rendersPage() {
+		public void containsAccountsPanel() {
+			specify(selectFirst(AccountsPanel.class).from(context), isNotNull());
 		}
 	}
 	@Override
