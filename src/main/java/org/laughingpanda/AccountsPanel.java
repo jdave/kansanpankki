@@ -10,6 +10,7 @@ import org.apache.wicket.markup.repeater.data.ListDataProvider;
 
 /**
  * @author Markus Hjort / Reaktor Innovations Oy
+ * @author Marko Sibakov / Reaktor Innovations Oy
  */
 public class AccountsPanel extends Panel {
 	public AccountsPanel(String id) {
