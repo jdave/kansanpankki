@@ -49,10 +49,25 @@
           </systemProperties>
         </configuration>
       </plugin>
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>true</downloadJavadocs>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-idea-plugin</artifactId>
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>true</downloadJavadocs>
+          <useFullNames>false</useFullNames>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <repositories>
-    <repository>
+  <repository>
       <id>laughing-panda</id>
       <name>Laughing Panda</name>
       <url>http://www.laughingpanda.org/maven2</url>
