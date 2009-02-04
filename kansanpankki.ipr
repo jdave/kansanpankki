@@ -222,20 +222,6 @@
         <entry key="$PROJECT_DIR$">
           <value>
             <SvnBranchConfiguration>
-              <option name="branchMap">
-                <map>
-                  <entry key="http://www.laughingpanda.org/svn/kansanpankki/branches">
-                    <value>
-                      <list />
-                    </value>
-                  </entry>
-                  <entry key="http://www.laughingpanda.org/svn/kansanpankki/tags">
-                    <value>
-                      <list />
-                    </value>
-                  </entry>
-                </map>
-              </option>
               <option name="branchUrls">
                 <list>
                   <option value="http://www.laughingpanda.org/svn/kansanpankki/branches" />
