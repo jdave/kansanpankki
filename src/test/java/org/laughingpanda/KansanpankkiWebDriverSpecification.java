@@ -1,5 +1,7 @@
 package org.laughingpanda;
 
+import org.laughingpanda.jetty.WebDriverJettyStarter;
+
 import jdave.Specification;
 import jdave.webdriver.WebDriverHolder;
 

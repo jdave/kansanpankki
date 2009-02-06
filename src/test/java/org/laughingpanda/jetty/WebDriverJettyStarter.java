@@ -1,4 +1,4 @@
-package org.laughingpanda;
+package org.laughingpanda.jetty;
 
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.nio.SelectChannelConnector;
