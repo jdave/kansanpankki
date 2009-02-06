@@ -1,5 +1,6 @@
 package org.laughingpanda;
 
+import java.util.Arrays;
 import java.util.List;
 
 import jdave.junit4.JDaveRunner;
@@ -8,6 +9,7 @@ import jdave.wicket.ComponentSpecification;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.repeater.data.DataView;
+import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.IModel;
 import org.junit.runner.RunWith;
 
@@ -41,6 +43,6 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Voi
 
 	@Override
 	protected AccountsPanel newComponent(String id, IModel<Void> model) {
-		return new AccountsPanel(id);
+		return new AccountsPanel(id, new ListDataProvider<String>(Arrays.asList("9500-12345","9500-56789")));
 	}
 }
