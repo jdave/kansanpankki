@@ -1,5 +1,7 @@
 package org.laughingpanda;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
@@ -17,7 +19,13 @@ public class AccountsPanel extends Panel {
 
 			@Override
 			protected void populateItem(Item<String> item) {
-				item.add(new Label("accountId", item.getDefaultModelObjectAsString()));
+				AjaxLink<Void> accountLink = new AjaxLink<Void>("accountLink") {
+					@Override
+					public void onClick(AjaxRequestTarget target) {
+					}
+				};
+				item.add(accountLink);
+				accountLink.add(new Label("accountId", item.getDefaultModelObjectAsString()));
 			}
 		});
 	}

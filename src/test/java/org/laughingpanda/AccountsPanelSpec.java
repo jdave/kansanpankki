@@ -7,6 +7,7 @@ import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
@@ -30,11 +31,26 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Voi
 
 		
 		public void containsAccountIdLabels() {
-			List<Component> accounts = selectAll(Label.class, "accountId").from(accountsView());
-			specify(accounts.size(), does.equal(2));
-			specify(accounts.get(0).getDefaultModelObjectAsString(), does.equal("9500-12345"));
-			specify(accounts.get(0).getDefaultModelObjectAsString(), does.equal("9500-12345"));
+			specify(accountLabels().size(), does.equal(2));
+			specify(accountLabels().get(0).getDefaultModelObjectAsString(), does.equal("9500-12345"));
+			specify(accountLabels().get(0).getDefaultModelObjectAsString(), does.equal("9500-12345"));
 		}
+		
+		public void containsAccountLinks() {
+			specify(accountLinks().size(), does.equal(2));
+		}
+		
+		public void accountLinkCanBeClicked() {
+			wicket.executeAjaxEvent(accountLinks().get(0), "onclick");
+		}
+	}
+
+	private List<Component> accountLinks() {
+		return selectAll(AjaxLink.class, "accountLink").from(accountsView());
+	}
+	
+	private List<Component> accountLabels() {
+		return selectAll(Label.class, "accountId").from(accountsView());
 	}
 	
 	private DataView<String> accountsView() {
