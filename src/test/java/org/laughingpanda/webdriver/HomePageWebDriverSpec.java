@@ -1,8 +1,9 @@
-package org.laughingpanda;
+package org.laughingpanda.webdriver;
 
 import jdave.webdriver.WebDriverSpecRunner;
 
 import org.junit.runner.RunWith;
+import org.laughingpanda.accounts.HomePage;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy

@@ -2,6 +2,7 @@ package org.laughingpanda;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.laughingpanda.accounts.HomePage;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy

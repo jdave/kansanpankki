@@ -1,10 +1,12 @@
-package org.laughingpanda;
+package org.laughingpanda.accounts;
 
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
 
 import org.apache.wicket.model.IModel;
 import org.junit.runner.RunWith;
+import org.laughingpanda.accounts.AccountsPanel;
+import org.laughingpanda.accounts.HomePage;
 
 /**
  * @author Markus Hjort / Reaktor Innovations Oy

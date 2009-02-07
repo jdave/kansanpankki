@@ -1,4 +1,4 @@
-package org.laughingpanda;
+package org.laughingpanda.webdriver;
 
 import org.laughingpanda.jetty.WebDriverJettyStarter;
 

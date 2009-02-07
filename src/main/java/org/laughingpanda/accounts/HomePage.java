@@ -1,4 +1,4 @@
-package org.laughingpanda;
+package org.laughingpanda.accounts;
 
 import java.util.Arrays;
 
