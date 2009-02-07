@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(JDaveRunner.class)
 public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Void> {
-	public class PanelContainingMultipleTransactions {
+	public class PanelContainingMultipleAccounts {
 		public AccountsPanel create() {
 			return startComponent();
 		}
@@ -40,11 +40,23 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Voi
 			specify(accountLinks().size(), does.equal(2));
 		}
 		
-		public void accountLinkCanBeClicked() {
+		public void whenAccountLinkIsClicked() {
 			wicket.executeAjaxEvent(accountLinks().get(0), "onclick");
 		}
 	}
 
+	public class PanelWhenAccountLinkIsClicked {
+		public AccountsPanel create() {
+			AccountsPanel panel = startComponent();
+			wicket.executeAjaxEvent(selectAll(AjaxLink.class, "accountLink").from(panel).get(0), "onclick");
+			return panel;
+		}
+		
+		public void isInAccountPage() {
+			specify(wicket.getLastRenderedPage().getClass(), does.equal(AccountPage.class));
+		}
+	}
+	
 	private List<Component> accountLinks() {
 		return selectAll(AjaxLink.class, "accountLink").from(accountsView());
 	}

@@ -22,10 +22,12 @@ public class AccountsPanel extends Panel {
 				AjaxLink<Void> accountLink = new AjaxLink<Void>("accountLink") {
 					@Override
 					public void onClick(AjaxRequestTarget target) {
+						setResponsePage(AccountPage.class);
 					}
 				};
 				item.add(accountLink);
-				accountLink.add(new Label("accountId", item.getDefaultModelObjectAsString()));
+				accountLink.add(new Label("accountId", item
+						.getDefaultModelObjectAsString()));
 			}
 		});
 	}
