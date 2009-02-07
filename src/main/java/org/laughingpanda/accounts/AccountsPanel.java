@@ -7,7 +7,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
-import org.laughingpanda.AccountPage;
+import org.laughingpanda.account.AccountPage;
 
 /**
  * @author Markus Hjort / Reaktor Innovations Oy

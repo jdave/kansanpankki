@@ -13,7 +13,7 @@ import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.IModel;
 import org.junit.runner.RunWith;
-import org.laughingpanda.AccountPage;
+import org.laughingpanda.account.AccountPage;
 import org.laughingpanda.accounts.AccountsPanel;
 
 /**
