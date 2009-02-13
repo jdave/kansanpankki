@@ -18,12 +18,13 @@ public class Jetty {
         new Jetty().start();
     }
     
-    public void start() {
+    public Server start() {
         server = new Server();
         server.setConnectors(getConnectors());
         server.addHandler(getWebApplicationContext());
         startServer();
         joinServer();
+        return server;
     }
     
     private void joinServer() {
@@ -36,6 +37,18 @@ public class Jetty {
                 }
             }
         }).start();
+    }
+    
+    public synchronized void stop() {
+        if (server == null) {
+            return;
+        }
+        try {
+            server.stop();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        server = null;
     }
 
     protected Connector[] getConnectors() {

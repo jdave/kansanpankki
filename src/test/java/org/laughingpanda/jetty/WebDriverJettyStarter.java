@@ -1,6 +1,7 @@
 package org.laughingpanda.jetty;
 
 import org.mortbay.jetty.Connector;
+import org.mortbay.jetty.Server;
 import org.mortbay.jetty.nio.SelectChannelConnector;
 
 /**
@@ -8,9 +9,10 @@ import org.mortbay.jetty.nio.SelectChannelConnector;
  */
 public class WebDriverJettyStarter extends Jetty {
     private static final int PORT = 8082;
+	private static Server server;
     
     public static void main(String... args) {
-        new WebDriverJettyStarter().start();
+        server = new WebDriverJettyStarter().start();
     }
     
     @Override

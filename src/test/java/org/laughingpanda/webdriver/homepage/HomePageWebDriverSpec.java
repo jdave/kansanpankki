@@ -1,14 +1,17 @@
-package org.laughingpanda.webdriver;
+package org.laughingpanda.webdriver.homepage;
 
+import jdave.Group;
 import jdave.webdriver.WebDriverSpecRunner;
 
 import org.junit.runner.RunWith;
 import org.laughingpanda.accounts.HomePage;
+import org.laughingpanda.webdriver.KansanpankkiWebDriverSpecification;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 @RunWith(WebDriverSpecRunner.class)
+@Group(value = { "kansanpankki" })
 public class HomePageWebDriverSpec extends KansanpankkiWebDriverSpecification<HomePage> {
 	public class AnyHomePage {
 		public HomePage create() {
