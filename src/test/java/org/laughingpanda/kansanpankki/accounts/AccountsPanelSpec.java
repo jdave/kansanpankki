@@ -12,6 +12,7 @@ import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.IModel;
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.account.AccountPage;
+import org.laughingpanda.kansanpankki.domain.Account;
 
 /**
  * @author Markus Hjort / Reaktor Innovations Oy
@@ -70,6 +71,18 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Voi
 
 	@Override
 	protected AccountsPanel newComponent(String id, IModel<Void> model) {
-		return new AccountsPanel(id, new ListDataProvider<String>(Arrays.asList("9500-12345","9500-56789")));
-	}
+		return new AccountsPanel(id, new ListDataProvider<Account>(Arrays.asList(
+                new Account() {
+                    @Override
+                    public String toString() {
+                        return "9500-12345";
+                    }
+                }, new Account() {
+                    @Override
+                    public String toString() {
+                        return "9500-56789";
+                    }
+                 }
+        )));
+ 	}
 }
