@@ -45,6 +45,7 @@ public class Jetty {
         }
         try {
             server.stop();
+            System.out.println("Stopped.");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -61,6 +62,7 @@ public class Jetty {
     private void startServer() {
         try {
             server.start();
+            System.out.println("Kansanpankki now running at http://localhost:" + PORT + CONTEXT_PATH + "/");
         } catch (Exception e1) {
             throw new RuntimeException(e1);
         }
