@@ -1,4 +1,4 @@
-package org.laughingpanda.account;
+package org.laughingpanda.kansanpankki.account;
 
 import org.apache.wicket.markup.html.WebPage;
 

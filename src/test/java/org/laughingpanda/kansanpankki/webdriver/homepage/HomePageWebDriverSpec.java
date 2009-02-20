@@ -1,11 +1,10 @@
-package org.laughingpanda.webdriver.homepage;
+package org.laughingpanda.kansanpankki.webdriver.homepage;
 
 import jdave.Group;
 import jdave.webdriver.WebDriverSpecRunner;
-
 import org.junit.runner.RunWith;
-import org.laughingpanda.accounts.HomePage;
-import org.laughingpanda.webdriver.KansanpankkiWebDriverSpecification;
+import org.laughingpanda.kansanpankki.accounts.HomePage;
+import org.laughingpanda.kansanpankki.webdriver.KansanpankkiWebDriverSpecification;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy

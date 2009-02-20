@@ -1,4 +1,4 @@
-package org.laughingpanda.webdriver;
+package org.laughingpanda.kansanpankki.webdriver;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy

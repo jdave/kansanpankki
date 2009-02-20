@@ -1,4 +1,4 @@
-package org.laughingpanda.accounts;
+package org.laughingpanda.kansanpankki.accounts;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.IModel;
 import org.junit.runner.RunWith;
-import org.laughingpanda.account.AccountPage;
+import org.laughingpanda.kansanpankki.account.AccountPage;
 
 /**
  * @author Markus Hjort / Reaktor Innovations Oy

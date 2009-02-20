@@ -1,4 +1,4 @@
-package org.laughingpanda.accounts;
+package org.laughingpanda.kansanpankki.accounts;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -7,7 +7,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
-import org.laughingpanda.account.AccountPage;
+import org.laughingpanda.kansanpankki.account.AccountPage;
 
 /**
  * @author Markus Hjort / Reaktor Innovations Oy

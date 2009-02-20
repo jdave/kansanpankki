@@ -1,7 +1,6 @@
-package org.laughingpanda.accounts;
+package org.laughingpanda.kansanpankki.accounts;
 
 import java.util.Arrays;
-
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
 

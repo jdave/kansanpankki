@@ -1,8 +1,7 @@
-package org.laughingpanda.account;
+package org.laughingpanda.kansanpankki.account;
 
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
-
 import org.apache.wicket.model.IModel;
 import org.junit.runner.RunWith;
 
