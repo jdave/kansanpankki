@@ -1,8 +1,8 @@
-package org.laughingpanda;
+package org.laughingpanda.kansanpankki;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
-import org.laughingpanda.accounts.HomePage;
+import org.laughingpanda.kansanpankki.accounts.HomePage;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy

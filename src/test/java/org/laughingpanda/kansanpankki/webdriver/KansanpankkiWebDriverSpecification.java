@@ -1,4 +1,4 @@
-package org.laughingpanda.webdriver;
+package org.laughingpanda.kansanpankki.webdriver;
 
 import jdave.Specification;
 import jdave.webdriver.WebDriverHolder;

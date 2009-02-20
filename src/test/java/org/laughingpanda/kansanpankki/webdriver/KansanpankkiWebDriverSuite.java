@@ -1,7 +1,6 @@
-package org.laughingpanda.webdriver;
+package org.laughingpanda.kansanpankki.webdriver;
 
 import jdave.runner.Groups;
-
 import org.junit.runner.RunWith;
 
 /**
