@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 public class AccountsPanelElements extends BaseElements {
-	
 	public List<WebElement> getAccountLabels() {
 		WebElement accountList = WebDriverHolder.get().findElement(By.id("accounts"));
         return accountList.findElements(By.id("account"));
