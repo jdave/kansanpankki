@@ -1,9 +1,8 @@
-package org.laughingpanda.webdriver;
+package org.laughingpanda.kansanpankki.webdriver;
 
 import jdave.webdriver.WebDriverGroupRunner;
 import jdave.webdriver.WebDriverHolder;
-
-import org.laughingpanda.jetty.WebDriverJettyStarter;
+import org.laughingpanda.kansanpankki.jetty.WebDriverJettyStarter;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
