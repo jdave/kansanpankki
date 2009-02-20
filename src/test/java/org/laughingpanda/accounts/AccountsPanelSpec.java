@@ -2,10 +2,8 @@ package org.laughingpanda.accounts;
 
 import java.util.Arrays;
 import java.util.List;
-
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
@@ -14,7 +12,6 @@ import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.IModel;
 import org.junit.runner.RunWith;
 import org.laughingpanda.account.AccountPage;
-import org.laughingpanda.accounts.AccountsPanel;
 
 /**
  * @author Markus Hjort / Reaktor Innovations Oy
@@ -59,12 +56,12 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Voi
 		}
 	}
 	
-	private List<Component> accountLinks() {
-		return selectAll(AjaxLink.class, "accountLink").from(accountsView());
+	private List<? extends Component> accountLinks() {
+        return selectAll(AjaxLink.class, "accountLink").<AjaxLink<?>>from(accountsView());
 	}
 	
-	private List<Component> accountLabels() {
-		return selectAll(Label.class, "accountId").from(accountsView());
+	private List<? extends Component> accountLabels() {
+		return selectAll(Label.class, "accountId").<Label>from(accountsView());
 	}
 	
 	private DataView<String> accountsView() {
