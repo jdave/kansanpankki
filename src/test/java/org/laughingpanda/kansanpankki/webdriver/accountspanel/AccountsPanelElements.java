@@ -13,13 +13,11 @@ public class AccountsPanelElements extends BaseElements {
 	
 	public List<WebElement> getAccountLabels() {
 		WebElement accountList = WebDriverHolder.get().findElement(By.id("accounts"));
-		List<WebElement> accounts = accountList.findElements(By.id("account"));
-		return accounts;
+        return accountList.findElements(By.id("account"));
 	}
 	
 	public List<WebElement> getAccountLinks() {
 		WebElement accountList = WebDriverHolder.get().findElement(By.id("accounts"));
-		List<WebElement> accounts = accountList.findElements(By.id("account"));
-		return accounts;
+        return accountList.findElements(By.id("account"));
 	}
 }
