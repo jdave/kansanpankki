@@ -170,26 +170,26 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$M2_REPO$/org/apache/wicket/wicket-extensions/1.4-rc1/wicket-extensions-1.4-rc1.jar!/" />
+          <root url="jar://$M2_REPO$/org/apache/wicket/wicket-extensions/1.4-rc2/wicket-extensions-1.4-rc2.jar!/" />
         </CLASSES>
         <JAVADOC>
-          <root url="jar://$M2_REPO$/org/apache/wicket/wicket-extensions/1.4-rc1/wicket-extensions-1.4-rc1-javadoc.jar!/" />
+          <root url="jar://$M2_REPO$/org/apache/wicket/wicket-extensions/1.4-rc2/wicket-extensions-1.4-rc2-javadoc.jar!/" />
         </JAVADOC>
         <SOURCES>
-          <root url="jar://$M2_REPO$/org/apache/wicket/wicket-extensions/1.4-rc1/wicket-extensions-1.4-rc1-sources.jar!/" />
+          <root url="jar://$M2_REPO$/org/apache/wicket/wicket-extensions/1.4-rc2/wicket-extensions-1.4-rc2-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$M2_REPO$/org/apache/wicket/wicket/1.4-rc1/wicket-1.4-rc1.jar!/" />
+          <root url="jar://$M2_REPO$/org/apache/wicket/wicket/1.4-rc2/wicket-1.4-rc2.jar!/" />
         </CLASSES>
         <JAVADOC>
-          <root url="jar://$M2_REPO$/org/apache/wicket/wicket/1.4-rc1/wicket-1.4-rc1-javadoc.jar!/" />
+          <root url="jar://$M2_REPO$/org/apache/wicket/wicket/1.4-rc2/wicket-1.4-rc2-javadoc.jar!/" />
         </JAVADOC>
         <SOURCES>
-          <root url="jar://$M2_REPO$/org/apache/wicket/wicket/1.4-rc1/wicket-1.4-rc1-sources.jar!/" />
+          <root url="jar://$M2_REPO$/org/apache/wicket/wicket/1.4-rc2/wicket-1.4-rc2-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
