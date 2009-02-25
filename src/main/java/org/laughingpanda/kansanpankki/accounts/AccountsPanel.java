@@ -1,5 +1,6 @@
 package org.laughingpanda.kansanpankki.accounts;
 
+import org.apache.wicket.PageParameters;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
@@ -7,6 +8,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
+import org.apache.wicket.model.Model;
 import org.laughingpanda.kansanpankki.account.AccountPage;
 import org.laughingpanda.kansanpankki.domain.Account;
 
@@ -21,10 +23,13 @@ public class AccountsPanel extends Panel {
 
 			@Override
 			protected void populateItem(Item<Account> item) {
-				AjaxLink<Void> accountLink = new AjaxLink<Void>("accountLink") {
+				Model<Account> model = new Model<Account>(item.getModelObject());
+				AjaxLink<Account> accountLink = new AjaxLink<Account>("accountLink", model) {
 					@Override
 					public void onClick(AjaxRequestTarget target) {
-						setResponsePage(AccountPage.class);
+						PageParameters parameters = new PageParameters();
+						parameters.add("accountId", this.getDefaultModelObjectAsString());
+						setResponsePage(AccountPage.class, parameters);
 					}
 				};
 				item.add(accountLink);

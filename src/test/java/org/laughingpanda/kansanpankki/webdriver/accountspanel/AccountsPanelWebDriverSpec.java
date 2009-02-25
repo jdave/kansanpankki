@@ -2,6 +2,7 @@ package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 
 import jdave.Group;
 import jdave.webdriver.WebDriverSpecRunner;
+
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.webdriver.KansanpankkiWebDriverSpecification;
 
@@ -23,6 +24,19 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
 		
 		public void containsAccountLinks() {
 			specify(context.getAccountLinks().size(), does.equal(2));
+		}
+	}
+	
+	public class PanelWhenAccountLinkIsClicked {
+		public AccountsPanelElements create() {
+			openBaseUrl();
+			AccountsPanelElements accountsPanelElements = new AccountsPanelElements();
+			accountsPanelElements.clickFirstAccountLink();
+			return accountsPanelElements;
+		}
+		
+		public void showsSalaryAccount() {
+			specify(textContainsInPage("Salary account"));
 		}
 	}
 }

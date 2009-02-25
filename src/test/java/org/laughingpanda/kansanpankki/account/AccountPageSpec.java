@@ -2,6 +2,8 @@ package org.laughingpanda.kansanpankki.account;
 
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
+
+import org.apache.wicket.PageParameters;
 import org.apache.wicket.model.IModel;
 import org.junit.runner.RunWith;
 
@@ -22,6 +24,6 @@ public class AccountPageSpec extends ComponentSpecification<AccountPage, Void> {
 
 	@Override
 	protected AccountPage newComponent(String id, IModel<Void> model) {
-		return new AccountPage();
+		return new AccountPage(new PageParameters());
 	}
 }

@@ -2,8 +2,10 @@ package org.laughingpanda.kansanpankki.accounts;
 
 import java.util.Arrays;
 import java.util.List;
+
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
@@ -28,7 +30,6 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Voi
 		public void containsDataView() {
 			specify(accountsView(), isNotNull());
 		}
-
 		
 		public void containsAccountIdLabels() {
 			specify(accountLabels().size(), does.equal(2));
@@ -40,7 +41,7 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Voi
 			specify(accountLinks().size(), does.equal(2));
 		}
 		
-		public void whenAccountLinkIsClicked() {
+		public void accountLinkCanBeClicked() {
 			wicket.executeAjaxEvent(accountLinks().get(0), "onclick");
 		}
 	}
