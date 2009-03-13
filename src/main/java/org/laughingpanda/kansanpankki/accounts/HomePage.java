@@ -17,7 +17,7 @@ public class HomePage extends WebPage {
     AccountRepository accountRepository = new AccountDao();
 
     public HomePage() {
-		add(new AccountsPanel("accountsPanel", getAccountsProvider()));
+		add(new AccountsPanel("accountsPanel", getAccountsProvider(), accountRepository));
 	}
 
 	private IDataProvider<Account> getAccountsProvider() {

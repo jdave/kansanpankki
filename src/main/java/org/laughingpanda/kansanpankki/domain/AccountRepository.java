@@ -18,6 +18,8 @@ package org.laughingpanda.kansanpankki.domain;
 
 import java.util.List;
 
+
 public interface AccountRepository {
     List<Account> findAllAccounts();
+    void addAccount(Account account);
 }

@@ -16,28 +16,35 @@
  */
 package org.laughingpanda.kansanpankki.dao;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.laughingpanda.kansanpankki.domain.Account;
 import org.laughingpanda.kansanpankki.domain.AccountRepository;
 
 public class AccountDao implements AccountRepository {
-    private List<Account> accounts = Arrays.asList(
-            new Account() {
+    private List<Account> accounts = new ArrayList<Account>() {{
+            add(new Account() {
                 @Override
                 public String toString() {
                     return "9500-12345";
                 }
-            },
-            new Account() {
+            });
+            add(new Account() {
                 @Override
                 public String toString() {
                     return "9500-56789";
                 }
-            }
-        );
+            });
+            }};
+      
 
     public List<Account> findAllAccounts() {
         return accounts;
     }
+
+	@Override
+	public void addAccount(Account account) {
+		accounts.add(account);
+	}
 }
