@@ -18,6 +18,8 @@ package org.laughingpanda.kansanpankki.account;
 
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
+
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -42,6 +44,11 @@ public class AccountPageSpec extends ComponentSpecification<AccountPage, Account
 		public void containsAccountIdLabel() {
 			Label accountIdLabel = selectFirst(Label.class, "accountId").from(context);
 			specify(accountIdLabel.getDefaultModelObject(), does.equal(account));
+		}
+		
+		public void containsBackLink() {
+			AjaxLink<Void> backLink = selectFirst(AjaxLink.class, "back").from(context);
+			specify(backLink, isNotNull());
 		}
 	}
 
