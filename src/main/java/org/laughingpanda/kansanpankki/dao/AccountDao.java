@@ -17,7 +17,6 @@
 package org.laughingpanda.kansanpankki.dao;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.laughingpanda.kansanpankki.domain.Account;
 import org.laughingpanda.kansanpankki.domain.AccountRepository;
@@ -39,6 +38,7 @@ public class AccountDao implements AccountRepository {
             }};
       
 
+    @Override
     public List<Account> findAllAccounts() {
         return accounts;
     }
