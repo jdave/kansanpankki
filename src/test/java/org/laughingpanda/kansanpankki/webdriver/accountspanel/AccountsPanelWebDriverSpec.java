@@ -19,11 +19,8 @@ package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 import java.util.List;
 import jdave.Group;
 import jdave.webdriver.WebDriverSpecRunner;
-import jdave.webdriver.elements.Find;
-import jdave.webdriver.elements.TextBox;
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.webdriver.KansanpankkiWebDriverSpecification;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -59,20 +56,18 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
         }
         
         public void amountToTransferTextFieldsThatHasZeroBalanceIsNotEnabled() {
-            WebElement transferAmountElement = context.getTransferAmountTextBoxOf(1);
+            WebElement transferAmountElement = context.getTransferAmountElementOfRow(1);
             specify(transferAmountElement.isEnabled(), does.equal(false));
         }
 
         public void amountToTransferTextFieldsThatHasBalanceIsEnabled() {
-            WebElement transferAmountElement = context.getTransferAmountTextBoxOf(2);
+            WebElement transferAmountElement = context.getTransferAmountElementOfRow(2);
             specify(transferAmountElement.isEnabled());
         }
         
         public void showsTargetAccountNumbers() {
-        	TextBox textBox = Find.textBox(By.name("accountsPanel:accounts:2:amountToTransfer"));
-        	textBox.type("100");
-			WebElement div = context.findWebElementByClassName("targetAccounts");
-			List<WebElement> transferTexts = div.getChildrenOfType("li");
+            context.getTransferAmounTextBoxOfRow(2).type("100");
+            List<WebElement> transferTexts = context.getTransferLinkTexts();
 			specify(transferTexts.get(0).getText(), does.equal("Transfer 100 euros to 9500-12345"));
 		}
     }

@@ -20,6 +20,7 @@ import java.util.List;
 import jdave.webdriver.WebDriverHolder;
 import jdave.webdriver.elements.Find;
 import jdave.webdriver.elements.Link;
+import jdave.webdriver.elements.TextBox;
 import org.laughingpanda.kansanpankki.webdriver.BaseElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -73,7 +74,17 @@ public class AccountsPanelElements extends BaseElements {
 		return WebDriverHolder.get().findElement(By.className(className));
 	}
 
-    public WebElement getTransferAmountTextBoxOf(int rowNumber) {
+    public WebElement getTransferAmountElementOfRow(int rowNumber) {
         return findWebElementByName("accountsPanel:accounts:" + rowNumber + ":amountToTransfer");
+    }
+
+    public TextBox getTransferAmounTextBoxOfRow(int rowNumber) {
+        return Find.textBox(By.name("accountsPanel:accounts:" + rowNumber + ":amountToTransfer"));
+    }
+
+    public List<WebElement> getTransferLinkTexts() {
+        WebElement div = findWebElementByClassName("targetAccounts");
+        List<WebElement> transferTexts = div.getChildrenOfType("li");
+        return transferTexts;
     }
 }
