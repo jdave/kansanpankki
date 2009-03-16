@@ -30,7 +30,7 @@ import org.laughingpanda.kansanpankki.domain.AccountRepository;
  * @author Markus Hjort / Reaktor Innovations Oy
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
-public class AccountsPanel extends Panel {
+public class AccountsPanel extends Panel implements TransferListener {
 	AccountRepository accountRepository = new AccountDao();
 
     public AccountsPanel(String id) {

@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.TextField;
@@ -27,7 +28,6 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.MockHttpServletRequest;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
-import org.apache.wicket.util.tester.DummyHomePage;
 import static org.hamcrest.Matchers.is;
 import org.jmock.Expectations;
 import org.junit.runner.RunWith;
@@ -107,6 +107,14 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
             specify(targetAccounts.isVisible(), does.equal(false));
         }
 
+        public void transfersEnteredAmountToAccountWhoseLinkIsClicked() {
+            enterAmountToTransfer("500");
+            AjaxLink<Account> transferLink = selectFirst(AjaxLink.class).from(targetAccounts);
+            wicket.executeAjaxEvent(transferLink, "onclick");
+            specify(accountWithMoney.getBalance(), does.equal(Money.euros(9000)));
+            specify(emptyAccount.getBalance(), does.equal(Money.euros(500)));
+        }
+
         private void enterAmountToTransfer(String amountToTransfer) {
             MockHttpServletRequest request = wicket.getServletRequest();
             request.setParameter(amountToTransferField.getInputName(), amountToTransfer);
@@ -124,7 +132,8 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
         AccountsView accountsView = new AccountsView("accounts", new AccountsDataProvider(repository));
         AccountsPanel accountsPanel = new AccountsPanel("accountsPanel");
         accountsPanel.replace(accountsView);
-        new DummyHomePage().add(accountsPanel);
+        HomePage page = new HomePage();
+        page.replace(accountsPanel);
         return accountsView;
     }
 }

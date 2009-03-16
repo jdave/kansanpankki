@@ -50,6 +50,10 @@ public class Account implements Serializable {
         return balance.isEmpty();
     }
 
+    public Transfer transfer(Money amountToTransfer) {
+        return new Transfer(amountToTransfer);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -65,5 +69,18 @@ public class Account implements Serializable {
     @Override
     public int hashCode() {
         return 1;
+    }
+
+    public class Transfer {
+        private final Money amountToTransfer;
+
+        public Transfer(Money amountToTransfer) {
+            this.amountToTransfer = amountToTransfer;
+        }
+
+        public void to(Account targetAccount) {
+            withdraw(amountToTransfer);
+            targetAccount.save(amountToTransfer);
+        }
     }
 }

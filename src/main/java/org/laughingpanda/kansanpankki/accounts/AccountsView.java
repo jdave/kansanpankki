@@ -19,6 +19,7 @@ package org.laughingpanda.kansanpankki.accounts;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -83,7 +84,7 @@ public class AccountsView extends DataView<Account> {
     private class PossibleTargetAccounts extends Panel {
         private Money amountToTransfer;
 
-        private PossibleTargetAccounts(IModel<Account> sourceAccountModel) {
+        private PossibleTargetAccounts(final IModel<Account> sourceAccountModel) {
             super("targetAccounts");
             List<Account> possibleTargets = new ArrayList<Account>();
             Iterator<IModel<Account>> allAccounts = getItemModels();
@@ -102,7 +103,23 @@ public class AccountsView extends DataView<Account> {
                             return amountToTransfer;
                         }
                     }));
-                    accountListItem.add(new Label("targetAccountId", accountListItem.getDefaultModel()));
+                    AjaxLink<Account> transferLink = new AjaxLink<Account>("doTransfer", accountListItem.getModel()) {
+                        @Override
+                        public void onClick(final AjaxRequestTarget target) {
+                            Account sourceAccount = sourceAccountModel.getObject();
+                            Account targetAccount = getModelObject();
+                            sourceAccount.transfer(amountToTransfer).to(targetAccount);
+                            getPage().visitChildren(TransferListener.class, new IVisitor<Component>() {
+                                @Override
+                                public Object component(Component component) {
+                                    target.addComponent(component);
+                                    return CONTINUE_TRAVERSAL;
+                                }
+                            });
+                        }
+                    };
+                    accountListItem.add(transferLink);
+                    transferLink.add(new Label("targetAccountId", accountListItem.getDefaultModel()));
                 }
             });
             setVisible(false);
