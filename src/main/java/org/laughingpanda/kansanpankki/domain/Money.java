@@ -16,7 +16,9 @@
  */
 package org.laughingpanda.kansanpankki.domain;
 
-public class Money {
+import java.io.Serializable;
+
+public class Money implements Serializable {
     private final int amountOfEuros;
 
     private Money(int amountOfEuros) {
