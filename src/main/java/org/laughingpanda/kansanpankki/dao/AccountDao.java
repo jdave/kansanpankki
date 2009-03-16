@@ -21,12 +21,15 @@ import java.util.ArrayList;
 import java.util.List;
 import org.laughingpanda.kansanpankki.domain.Account;
 import org.laughingpanda.kansanpankki.domain.AccountRepository;
+import org.laughingpanda.kansanpankki.domain.Money;
 
 public class AccountDao implements AccountRepository, Serializable {
     private List<Account> accounts = new ArrayList<Account>();
     {
         accounts.add(new Account("9500-12345"));
-        accounts.add(new Account("9500-56789"));
+        Account accountWithMoney = new Account("9500-56789");
+        accountWithMoney.save(Money.euros(9500));
+        accounts.add(accountWithMoney);
     }
 
     @Override
