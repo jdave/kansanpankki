@@ -42,7 +42,7 @@ public class AccountPage extends WebPage {
 		});
 	}
 	
-	private class AccountIdLabel extends Label {
+	private final static class AccountIdLabel extends Label {
 		public AccountIdLabel(String id, IModel<Account> model) {
 			super(id, model);
 		}

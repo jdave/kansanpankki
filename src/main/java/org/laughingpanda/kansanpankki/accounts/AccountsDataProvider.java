@@ -25,7 +25,7 @@ import org.laughingpanda.kansanpankki.domain.Account;
 import org.laughingpanda.kansanpankki.domain.AccountRepository;
 
 final class AccountsDataProvider implements IDataProvider<Account> {
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
 
     public AccountsDataProvider(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
