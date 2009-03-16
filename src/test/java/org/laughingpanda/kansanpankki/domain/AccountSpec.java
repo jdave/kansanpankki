@@ -59,7 +59,7 @@ public class AccountSpec extends Specification<Account> {
 
     public class EmptyAccount {
         public Account create() {
-            account.setBalance(Money.euros(0));
+            account.save(Money.euros(0));
             return account;
         }
 
@@ -73,7 +73,7 @@ public class AccountSpec extends Specification<Account> {
 
     public class AccountWithBalanceOf50Euros {
         public Account create() {
-            account.setBalance(Money.euros(50));
+            account.save(Money.euros(50));
             return account;
         }
 

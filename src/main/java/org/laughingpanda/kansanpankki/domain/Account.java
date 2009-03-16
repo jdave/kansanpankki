@@ -21,7 +21,6 @@ import java.io.Serializable;
 public class Account implements Serializable {
 	private String accountId;
 	private Money balance = Money.euros(0);
-	
 
 	public Account(String accountId) {
 		this.accountId = accountId;
@@ -31,12 +30,8 @@ public class Account implements Serializable {
 		return accountId;
 	}
 	
-	    public Money getBalance() {
+	public Money getBalance() {
         return balance;
-    }
-
-    public void setBalance(Money balance) {
-        this.balance = balance;
     }
 
     public void save(Money money) {
