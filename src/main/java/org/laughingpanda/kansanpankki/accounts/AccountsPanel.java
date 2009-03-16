@@ -26,9 +26,9 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
-import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.Model;
 import org.laughingpanda.kansanpankki.account.AccountPage;
+import org.laughingpanda.kansanpankki.dao.AccountDao;
 import org.laughingpanda.kansanpankki.domain.Account;
 import org.laughingpanda.kansanpankki.domain.AccountRepository;
 
@@ -37,10 +37,13 @@ import org.laughingpanda.kansanpankki.domain.AccountRepository;
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 public class AccountsPanel extends Panel {
-	public AccountsPanel(String id, IDataProvider<Account> accountsProvider, final AccountRepository accountRepository) {
+	AccountRepository accountRepository = new AccountDao();
+    private AccountsDataProvider dataProvider = new AccountsDataProvider(accountRepository);
+	
+	public AccountsPanel(String id) {
 		super(id);
 		setOutputMarkupId(true);
-		add(new DataView<Account>("accounts", accountsProvider) {
+		add(new DataView<Account>("accounts", dataProvider) {
 
 			@Override
 			protected void populateItem(Item<Account> item) {

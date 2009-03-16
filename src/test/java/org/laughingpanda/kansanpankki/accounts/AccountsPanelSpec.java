@@ -16,7 +16,6 @@
  */
 package org.laughingpanda.kansanpankki.accounts;
 
-import java.util.Arrays;
 import java.util.List;
 
 import jdave.junit4.JDaveRunner;
@@ -28,7 +27,6 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.repeater.data.DataView;
-import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.tester.FormTester;
 import org.jmock.Expectations;
@@ -43,7 +41,7 @@ import org.laughingpanda.kansanpankki.domain.AccountRepository;
  */
 @RunWith(JDaveRunner.class)
 public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Void> {
-	private AccountRepository accountRepository;
+	private AccountRepository accountRepository = mock(AccountRepository.class);
 
 	public class PanelContainingMultipleAccounts {
 		public AccountsPanel create() {
@@ -104,19 +102,8 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Voi
 
 	@Override
 	protected AccountsPanel newComponent(String id, IModel<Void> model) {
-		accountRepository = mock(AccountRepository.class);
-		return new AccountsPanel(id, new ListDataProvider<Account>(Arrays.asList(
-                new Account() {
-                    @Override
-                    public String toString() {
-                        return "9500-12345";
-                    }
-                }, new Account() {
-                    @Override
-                    public String toString() {
-                        return "9500-56789";
-                    }
-                 }
-        )), accountRepository);
+		AccountsPanel accountsPanel = new AccountsPanel(id);
+		accountsPanel.accountRepository = accountRepository;
+		return accountsPanel;
  	}
 }
