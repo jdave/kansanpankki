@@ -18,7 +18,6 @@ package org.laughingpanda.kansanpankki.accounts;
 
 import java.util.Iterator;
 import java.util.List;
-
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -32,19 +31,23 @@ final class AccountsDataProvider implements IDataProvider<Account> {
 		this.accountRepository = accountRepository;
 	}
 
-	public Iterator<Account> iterator(int first, int count) {
+	@Override
+    public Iterator<Account> iterator(int first, int count) {
 	    return allAccounts().iterator();
 	}
 
-	public int size() {
+	@Override
+    public int size() {
 	    return allAccounts().size();
 	}
 
-	public IModel<Account> model(Account object) {
+	@Override
+    public IModel<Account> model(Account object) {
 	    return new Model<Account>(object);
 	}
 
-	public void detach() {
+	@Override
+    public void detach() {
 	}
 
 	private List<Account> allAccounts() {
