@@ -37,44 +37,44 @@ import org.laughingpanda.kansanpankki.domain.AccountRepository;
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 public class AccountsPanel extends Panel {
-	AccountRepository accountRepository = new AccountDao();
+    AccountRepository accountRepository = new AccountDao();
 
     public AccountsPanel(String id) {
-		super(id);
-		setOutputMarkupId(true);
+        super(id);
+        setOutputMarkupId(true);
         AccountsDataProvider dataProvider = new AccountsDataProvider(accountRepository);
         add(new DataView<Account>("accounts", dataProvider) {
 
-			@Override
-			protected void populateItem(Item<Account> item) {
-				IModel<Account> model = new Model<Account>(item.getModelObject());
-				AjaxLink<Account> accountLink = new AjaxLink<Account>("accountLink", model) {
+            @Override
+            protected void populateItem(Item<Account> item) {
+                IModel<Account> model = new Model<Account>(item.getModelObject());
+                AjaxLink<Account> accountLink = new AjaxLink<Account>("accountLink", model) {
 
-					@Override
-					public void onClick(AjaxRequestTarget target) {
-						setResponsePage(new AccountPage(getModel(), getPage()));
-					}
-				};
-				item.add(accountLink);
-				accountLink.add(new Label("accountId", item
-						.getDefaultModelObjectAsString()));
-			}
-		});
-		add(new AccountForm("newAccountForm"));
-	}
-    
-    private final class AccountForm extends Form<Void> {
-    	private AccountForm(String id) {
-    		super(id);
-    		final TextField<String> accountNumberField = new TextField<String>("accountNumber", new Model<String>());
-    		add(accountNumberField);
-    		add(new AjaxButton("addAccountButton") {
-    			@Override
-    			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-    				accountRepository.addAccount(new Account(accountNumberField.getDefaultModelObjectAsString()));
-    				target.addComponent(AccountsPanel.this);
-    			}});
-    	}
+                    @Override
+                    public void onClick(AjaxRequestTarget target) {
+                        setResponsePage(new AccountPage(getModel(), getPage()));
+                    }
+                };
+                item.add(accountLink);
+                accountLink.add(new Label("accountId", item
+                        .getDefaultModelObjectAsString()));
+            }
+        });
+        add(new AccountForm("newAccountForm"));
     }
-    
+
+    private final class AccountForm extends Form<Void> {
+        private AccountForm(String id) {
+            super(id);
+            final TextField<String> accountNumberField = new TextField<String>("accountNumber", new Model<String>());
+            add(accountNumberField);
+            add(new AjaxButton("addAccountButton") {
+                @Override
+                protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+                    accountRepository.addAccount(new Account(accountNumberField.getDefaultModelObjectAsString()));
+                    target.addComponent(AccountsPanel.this);
+                }
+            });
+        }
+    }
 }
