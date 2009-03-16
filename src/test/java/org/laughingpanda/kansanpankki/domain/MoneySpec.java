@@ -30,10 +30,11 @@ public class MoneySpec extends Specification<Money> {
         }
         
         public void isEqualToMoneyWithSameAmountOfEuros() {
-            specify(Money.euros(10), satisfies(new EqualsHashCodeContract<Money>() {
+        	final Money tenEuros = Money.euros(10);            
+        	specify(tenEuros, satisfies(new EqualsHashCodeContract<Money>() {
                 @Override
                 protected Money equal() {
-                    return Money.euros(10);
+                    return tenEuros;
                 }
 
                 @Override
