@@ -18,7 +18,6 @@ package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 
 import jdave.Group;
 import jdave.webdriver.WebDriverSpecRunner;
-
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.webdriver.KansanpankkiWebDriverSpecification;
 
@@ -46,6 +45,7 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
             context.enterNewAccountNumber("1111-2222");
             context.clickAddAccountButton();
 			specify(context.getAccountLinks().size(), does.equal(3));
+            specify(context.getAccountLabels().get(2).getText(), does.equal("Salary account"));
 		}
 
     }
