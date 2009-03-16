@@ -80,7 +80,7 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
 
             WebMarkupContainer targetAccounts = selectFirst(WebMarkupContainer.class, "targetAccounts").from(row);
             specify(targetAccounts.isVisible());
-            List<Label> targetAccountLabels = selectAll(Label.class).from(targetAccounts);
+            List<Label> targetAccountLabels = selectAll(Label.class, "targetAccountId").from(targetAccounts);
             specify(targetAccountLabels.size(), does.equal(1));
             specify(targetAccountLabels.get(0).getDefaultModelObject(), does.equal(emptyAccount));
         }
