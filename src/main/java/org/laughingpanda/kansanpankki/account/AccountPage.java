@@ -25,7 +25,7 @@ import org.apache.wicket.markup.html.basic.Label;
  */
 public class AccountPage extends WebPage {
 	public AccountPage(PageParameters pageParameters) {
-		String accountId = (String) pageParameters.getString("accountId");
+		String accountId = pageParameters.getString("accountId");
 		add(new AccountIdLabel("accountHeaderId", accountId));
 		add(new AccountIdLabel("accountId", accountId));
 	}
