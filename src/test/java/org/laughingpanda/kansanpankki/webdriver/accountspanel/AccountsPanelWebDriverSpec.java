@@ -34,10 +34,6 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
             return new AccountsPanelElements();
         }
 
-        public void containsAccountLabels() {
-			specify(context.getAccountLabels().size(), does.equal(2));
-        }
-
         public void containsAccountLinks() {
             specify(context.getAccountLinks().size(), does.equal(2));
         }
@@ -46,7 +42,9 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
             context.enterNewAccountNumber("1111-2222");
             context.clickAddAccountButton();
             specify(context.getAccountLinks().size(), does.equal(3));
-            specify(context.getAccountLabels().get(2).getText(), does.equal("Salary account"));
+        }
+        
+        public void containsAccountLabels() {
             specify(context.getAccountLabels().get(1).getText(), does.equal("Salary account"));
             specify(context.getAccountLabels().get(0).getText(), does.equal("Salary account"));
         }
