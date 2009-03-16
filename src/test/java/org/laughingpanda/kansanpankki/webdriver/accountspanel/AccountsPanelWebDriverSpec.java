@@ -26,8 +26,7 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
 		}
 		
 		public void newAccountCanBeAdded() {
-            String newAccountNumber = "1111-2222";
-            context.enterNewAccountNumber(newAccountNumber);
+            context.enterNewAccountNumber("1111-2222");
             context.clickAddAccountButton();
 			specify(context.getAccountLinks().size(), does.equal(3));
 		}
