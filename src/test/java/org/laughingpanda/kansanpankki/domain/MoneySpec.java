@@ -17,6 +17,7 @@
 package org.laughingpanda.kansanpankki.domain;
 
 import jdave.Specification;
+import jdave.contract.EqualsHashCodeContract;
 import jdave.contract.SerializableContract;
 import jdave.junit4.JDaveRunner;
 import org.junit.runner.RunWith;
@@ -26,6 +27,25 @@ public class MoneySpec extends Specification<Money> {
     public class AnyEuros {
         public void isSerializable() {
             specify(Money.euros(15), satisfies(new SerializableContract()));
+        }
+        
+        public void isEqualToMoneyWithSameAmountOfEuros() {
+            specify(Money.euros(10), satisfies(new EqualsHashCodeContract<Money>() {
+                @Override
+                protected Money equal() {
+                    return Money.euros(10);
+                }
+
+                @Override
+                protected Money nonEqual() {
+                    return Money.euros(20);
+                }
+
+                @Override
+                protected Money subType() {
+                    return null;
+                }
+            }));
         }
     }
 }
