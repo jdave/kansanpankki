@@ -18,6 +18,7 @@ package org.laughingpanda.kansanpankki.domain;
 
 import jdave.Block;
 import jdave.Specification;
+import jdave.contract.EqualsHashCodeContract;
 import jdave.junit4.JDaveRunner;
 import org.junit.runner.RunWith;
 
@@ -25,6 +26,26 @@ import org.junit.runner.RunWith;
 public class AccountSpec extends Specification<Account> {
     private final Account account = new Account("9500-00000");
 
+    public class AnyAccount {
+        public void isEqualToAccountWithSameId() {
+            specify(account, satisfies(new EqualsHashCodeContract<Account>() {
+                @Override
+                protected Account equal() {
+                    return new Account("9500-00000");
+                }
+
+                @Override
+                protected Account nonEqual() {
+                    return new Account("12345-6789");
+                }
+
+                @Override
+                protected Account subType() {
+                    return new Account("9500-00000") {};
+                }
+            }));
+        }
+    }
 
     public class NewAccount {
         public Account create() {
