@@ -29,12 +29,31 @@ public class MoneySpec extends Specification<Money> {
             specify(Money.euros(15), satisfies(new SerializableContract()));
         }
         
-        public void isEqualToMoneyWithSameAmountOfEuros() {
+        public void isEqualToItself() {
         	final Money tenEuros = Money.euros(10);            
         	specify(tenEuros, satisfies(new EqualsHashCodeContract<Money>() {
                 @Override
                 protected Money equal() {
                     return tenEuros;
+                }
+
+                @Override
+                protected Money nonEqual() {
+                    return Money.euros(20);
+                }
+
+                @Override
+                protected Money subType() {
+                    return null;
+                }
+            }));
+        }
+
+        public void isEqualToMoneyWithSameAmountOfEuros() {
+            specify(Money.euros(10), satisfies(new EqualsHashCodeContract<Money>() {
+                @Override
+                protected Money equal() {
+                    return Money.euros(10);
                 }
 
                 @Override
