@@ -36,6 +36,9 @@ public class AccountDao implements AccountRepository, Serializable {
 
     @Override
     public void addAccount(Account account) {
+        if (accounts.contains(account)) {
+            throw new IllegalArgumentException("There is already an account with id " + account.getAccountId());
+        }
         accounts.add(account);
     }
 }
