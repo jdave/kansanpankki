@@ -21,6 +21,7 @@
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
       <entry name="!?*.css" />
+      <entry name="!?*.properties" />
     </wildcardResourcePatterns>
   </component>
   <component name="CopyrightManager" default="">
