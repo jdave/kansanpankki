@@ -21,8 +21,11 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.laughingpanda.kansanpankki.domain.Account;
+import org.laughingpanda.kansanpankki.domain.AccountTransaction;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
@@ -38,6 +41,12 @@ public class AccountPage extends WebPage {
             @Override
             public void onClick(AjaxRequestTarget target) {
                 setResponsePage(AccountPage.this.accountsPage);
+            }
+        });
+        add(new ListView<AccountTransaction>("transactions", accountModel.getObject().getTransactions()) {
+            @Override
+            protected void populateItem(ListItem<AccountTransaction> accountTransactionListItem) {
+                accountTransactionListItem.add(new Label("transaction", accountTransactionListItem.getModel()));
             }
         });
     }
