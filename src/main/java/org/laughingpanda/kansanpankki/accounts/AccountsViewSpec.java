@@ -19,6 +19,7 @@ package org.laughingpanda.kansanpankki.accounts;
 import java.util.Arrays;
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.jmock.Expectations;
 import org.junit.runner.RunWith;
@@ -37,8 +38,9 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
             return startComponent();
         }
 
-        public void hasTransferTextFieldDisabled() {
-            
+        public void hasTransferAmountTextFieldDisabled() {
+            TextField<?> amountToTransfer = selectFirst(TextField.class, "amountToTransfer").from(context);
+            specify(amountToTransfer.isEnabled(), does.equal(false));
         }
     }
 

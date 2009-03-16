@@ -19,6 +19,7 @@ package org.laughingpanda.kansanpankki.accounts;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
@@ -41,7 +42,8 @@ public class AccountsView extends DataView<Account> {
                 setResponsePage(new AccountPage(getModel(), getPage()));
             }
         };
-        item.add(accountLink);
         accountLink.add(new Label("accountId", item.getDefaultModelObjectAsString()));
+        item.add(accountLink);
+        item.add(new TextField<Integer>("amountToTransfer").setEnabled(false));
     }
 }
