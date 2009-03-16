@@ -18,27 +18,36 @@ package org.laughingpanda.kansanpankki.account;
 
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
-import org.apache.wicket.PageParameters;
+
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.junit.runner.RunWith;
+import org.laughingpanda.kansanpankki.domain.Account;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 @RunWith(JDaveRunner.class)
-public class AccountPageSpec extends ComponentSpecification<AccountPage, Void> {
-    public class Any {
-        public AccountPage create() {
-            return startComponent();
-        }
+public class AccountPageSpec extends ComponentSpecification<AccountPage, Account> {
+	private Account account = new Account();
+	public class Any {
+		public AccountPage create() {
+			return startComponent(new Model<Account>(account));
+		}
 
-        public void pageIsRendered() {
-            specify(context, isNotNull());
-        }
-    }
+		public void pageIsRendered() {
+			specify(context, isNotNull());
+		}
+		
+		public void containsFoo() {
+			Label accountIdLabel = selectFirst(Label.class, "accountId").from(context);
+			specify(accountIdLabel.getDefaultModelObject(), does.equal(account));
+		}
+	}
 
-    @Override
-    protected AccountPage newComponent(String id, IModel<Void> model) {
-        return new AccountPage(new PageParameters());
-    }
+	@Override
+	protected AccountPage newComponent(String id, IModel<Account> model) {
+		return new AccountPage(model);
+	}
 }

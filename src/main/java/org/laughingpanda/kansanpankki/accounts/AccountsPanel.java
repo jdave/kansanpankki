@@ -16,7 +16,6 @@
  */
 package org.laughingpanda.kansanpankki.accounts;
 
-import org.apache.wicket.PageParameters;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -26,6 +25,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.laughingpanda.kansanpankki.account.AccountPage;
 import org.laughingpanda.kansanpankki.dao.AccountDao;
@@ -37,39 +37,36 @@ import org.laughingpanda.kansanpankki.domain.AccountRepository;
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 public class AccountsPanel extends Panel {
-    AccountRepository accountRepository = new AccountDao();
+	AccountRepository accountRepository = new AccountDao();
 
     public AccountsPanel(String id) {
-        super(id);
-        setOutputMarkupId(true);
+		super(id);
+		setOutputMarkupId(true);
         AccountsDataProvider dataProvider = new AccountsDataProvider(accountRepository);
         add(new DataView<Account>("accounts", dataProvider) {
 
-            @Override
-            protected void populateItem(Item<Account> item) {
-                Model<Account> model = new Model<Account>(item.getModelObject());
-                AjaxLink<Account> accountLink = new AjaxLink<Account>("accountLink", model) {
-                    @Override
-                    public void onClick(AjaxRequestTarget target) {
-                        PageParameters parameters = new PageParameters();
-                        parameters.add("accountId", getDefaultModelObjectAsString());
-                        setResponsePage(AccountPage.class, parameters);
-                    }
-                };
-                item.add(accountLink);
-                accountLink.add(new Label("accountId", item
-                        .getDefaultModelObjectAsString()));
-            }
-        });
-        Form<?> form = new Form<Void>("newAccountForm");
-        form.add(new TextField<String>("accountNumber", new Model<String>()));
-        form.add(new AjaxButton("addAccountButton") {
-            @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                accountRepository.addAccount(new Account());
-                target.addComponent(AccountsPanel.this);
-            }
-        });
-        add(form);
-    }
+			@Override
+			protected void populateItem(Item<Account> item) {
+				IModel<Account> model = new Model<Account>(item.getModelObject());
+				AjaxLink<Account> accountLink = new AjaxLink<Account>("accountLink", model) {
+					@Override
+					public void onClick(AjaxRequestTarget target) {
+						setResponsePage(new AccountPage(getModel()));
+					}
+				};
+				item.add(accountLink);
+				accountLink.add(new Label("accountId", item
+						.getDefaultModelObjectAsString()));
+			}
+		});
+		Form<?> form = new Form<Void>("newAccountForm");
+		form.add(new TextField<String>("accountNumber", new Model<String>()));
+		form.add(new AjaxButton("addAccountButton") {
+			@Override
+			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+				accountRepository.addAccount(new Account());
+				target.addComponent(AccountsPanel.this);
+			}});
+		add(form);
+	}
 }
