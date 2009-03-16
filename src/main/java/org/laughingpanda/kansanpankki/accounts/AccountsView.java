@@ -19,9 +19,11 @@ package org.laughingpanda.kansanpankki.accounts;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -60,6 +62,11 @@ public class AccountsView extends DataView<Account> {
             @Override
             public boolean isEnabled() {
                 return !(model.getObject()).isEmpty();
+            }
+            
+            @Override
+            protected void onDisabled(ComponentTag tag) {
+            	tag.put("disabled", "true");
             }
         };
         amountToTransfer.setType(Integer.class);

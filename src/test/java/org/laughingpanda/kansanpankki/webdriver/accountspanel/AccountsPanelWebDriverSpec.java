@@ -53,6 +53,14 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
         	specify(context.getBalanceLabels().get(1).getText(), does.equal("9500 euros"));
         	specify(context.getBalanceLabels().get(0).getText(), does.equal("0 euros"));
         }
+        
+        public void amountToTransferTextFieldsThatHasZeroBalanceIsNotEnabled() {
+        	specify(context.findWebElementByName("accountsPanel:accounts:1:amountToTransfer").isEnabled(), does.equal(false));
+        }
+        
+        public void amountToTransferTextFieldsThatHasBalanceIsEnabled() {
+        	specify(context.findWebElementByName("accountsPanel:accounts:2:amountToTransfer").isEnabled(), does.equal(true));
+        }
     }
 
     public class PanelWhenAccountLinkIsClicked {

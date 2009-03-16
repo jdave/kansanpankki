@@ -62,4 +62,13 @@ public class AccountsPanelElements extends BaseElements {
     private WebElement getAccounts() {
     	return WebDriverHolder.get().findElement(By.id("accounts"));
     }
+
+	public List<WebElement> getAmountToTransfer() {
+		List<WebElement> textBoxes = WebDriverHolder.get().findElements(By.id("amountToTransfer"));
+		return textBoxes;
+	}
+
+	public WebElement findWebElementByName(String name) {
+		return WebDriverHolder.get().findElement(By.name(name));
+	}
 }
