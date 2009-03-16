@@ -39,7 +39,7 @@ public class AccountPageSpec extends ComponentSpecification<AccountPage, Account
 			specify(context, isNotNull());
 		}
 		
-		public void containsFoo() {
+		public void containsAccountIdLabel() {
 			Label accountIdLabel = selectFirst(Label.class, "accountId").from(context);
 			specify(accountIdLabel.getDefaultModelObject(), does.equal(account));
 		}
