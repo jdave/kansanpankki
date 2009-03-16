@@ -64,6 +64,9 @@ public class AccountsView extends DataView<Account> {
                 return !(model.getObject()).isEmpty();
             }
             
+            // Wicket uses disabled="disabled" attribute for disabled text fields
+            // However, WebDriver checks disabled state by checking if there is
+            // fields having disabled attribute set to "true"
             @Override
             protected void onDisabled(ComponentTag tag) {
             	tag.put("disabled", "true");
@@ -90,15 +93,7 @@ public class AccountsView extends DataView<Account> {
 
         private PossibleTargetAccounts(final IModel<Account> sourceAccountModel) {
             super("targetAccounts");
-            List<Account> possibleTargets = new ArrayList<Account>();
-            Iterator<IModel<Account>> allAccounts = getItemModels();
-            while (allAccounts.hasNext()) {
-                IModel<Account> accountModel = allAccounts.next();
-                if (!accountModel.getObject().equals(sourceAccountModel.getObject())) {
-                    possibleTargets.add(accountModel.getObject());
-                }
-            }
-            add(new ListView<Account>("list", possibleTargets) {
+            add(new ListView<Account>("list", getOtherAccounts(sourceAccountModel)) {
                 @Override
                 protected void populateItem(final ListItem<Account> accountListItem) {
                     accountListItem.add(new Label("targetAmount", new AbstractReadOnlyModel<Money>() {
@@ -116,6 +111,17 @@ public class AccountsView extends DataView<Account> {
             setVisible(false);
             setOutputMarkupPlaceholderTag(true);
         }
+
+		private List<Account> getOtherAccounts(
+				final IModel<Account> sourceAccountModel) {
+			List<Account> accounts = new ArrayList<Account>();
+            Iterator<IModel<Account>> allAccounts = getItemModels();
+            while (allAccounts.hasNext()) {
+                accounts.add(allAccounts.next().getObject());
+            }
+            accounts.remove(sourceAccountModel.getObject());
+			return accounts;
+		}
 
         public void setAmountToTransfer(Money amountToTransfer) {
             this.amountToTransfer = amountToTransfer;
