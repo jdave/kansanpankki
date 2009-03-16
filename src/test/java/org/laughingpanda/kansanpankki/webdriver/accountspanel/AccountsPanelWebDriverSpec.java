@@ -16,11 +16,15 @@
  */
 package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 
+import java.util.List;
+
 import jdave.Group;
+import jdave.webdriver.Channel;
 import jdave.webdriver.WebDriverSpecRunner;
 
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.webdriver.KansanpankkiWebDriverSpecification;
+import org.openqa.selenium.WebElement;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
@@ -61,6 +65,16 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
         public void amountToTransferTextFieldsThatHasBalanceIsEnabled() {
         	specify(context.findWebElementByName("accountsPanel:accounts:2:amountToTransfer").isEnabled(), does.equal(true));
         }
+        
+        public void showsTargetAccountNumbers() {
+			WebElement findWebElementByName = context
+					.findWebElementByName("accountsPanel:accounts:2:amountToTransfer");
+			findWebElementByName.sendKeys("100");
+			new Channel().waitForAjax();
+			WebElement div = context.findWebElementByClassName("targetAccounts");
+			List<WebElement> transferTexts = div.getChildrenOfType("li");
+			specify(transferTexts.get(0).getText(), does.equal("Transfer 100 euros to 9500-12345"));
+		}
     }
 
     public class PanelWhenAccountLinkIsClicked {

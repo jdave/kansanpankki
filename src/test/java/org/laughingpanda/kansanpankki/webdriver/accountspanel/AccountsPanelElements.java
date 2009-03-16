@@ -68,4 +68,8 @@ public class AccountsPanelElements extends BaseElements {
 	public WebElement findWebElementByName(String name) {
 		return WebDriverHolder.get().findElement(By.name(name));
 	}
+
+	public WebElement findWebElementByClassName(String className) {
+		return WebDriverHolder.get().findElement(By.className(className));
+	}
 }
