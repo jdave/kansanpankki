@@ -1,7 +1,11 @@
 package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 
 import java.util.List;
+
 import jdave.webdriver.WebDriverHolder;
+import jdave.webdriver.elements.Find;
+import jdave.webdriver.elements.Link;
+
 import org.laughingpanda.kansanpankki.webdriver.BaseElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -30,12 +34,7 @@ public class AccountsPanelElements extends BaseElements {
     }
 
     public void clickAddAccountButton() {
-        WebElement addAccount = WebDriverHolder.get().findElement(By.name("addAccountButton"));
+    	Link addAccount = Find.link(By.name("addAccountButton"));
         addAccount.click();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            //
-        }
     }
 }
