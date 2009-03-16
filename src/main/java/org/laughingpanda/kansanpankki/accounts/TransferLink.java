@@ -38,6 +38,10 @@ class TransferLink extends AjaxLink<Account> {
         Account sourceAccount = sourceAccountModel.getObject();
         Account targetAccount = getModelObject();
         sourceAccount.transfer(amountToTransfer).to(targetAccount);
+        repaintComponentsThatNeedToBeNotifiedOnChangedBalances(target);
+    }
+
+    private void repaintComponentsThatNeedToBeNotifiedOnChangedBalances(final AjaxRequestTarget target) {
         getPage().visitChildren(TransferListener.class, new IVisitor<Component>() {
             @Override
             public Object component(Component component) {
