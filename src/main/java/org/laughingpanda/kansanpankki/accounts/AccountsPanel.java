@@ -38,12 +38,12 @@ import org.laughingpanda.kansanpankki.domain.AccountRepository;
  */
 public class AccountsPanel extends Panel {
 	AccountRepository accountRepository = new AccountDao();
-    private AccountsDataProvider dataProvider = new AccountsDataProvider(accountRepository);
-	
-	public AccountsPanel(String id) {
+
+    public AccountsPanel(String id) {
 		super(id);
 		setOutputMarkupId(true);
-		add(new DataView<Account>("accounts", dataProvider) {
+        AccountsDataProvider dataProvider = new AccountsDataProvider(accountRepository);
+        add(new DataView<Account>("accounts", dataProvider) {
 
 			@Override
 			protected void populateItem(Item<Account> item) {
