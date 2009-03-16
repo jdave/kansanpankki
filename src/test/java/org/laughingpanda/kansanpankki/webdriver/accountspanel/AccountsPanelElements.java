@@ -72,4 +72,8 @@ public class AccountsPanelElements extends BaseElements {
 	public WebElement findWebElementByClassName(String className) {
 		return WebDriverHolder.get().findElement(By.className(className));
 	}
+
+    public WebElement getTransferAmountTextBoxOf(int rowNumber) {
+        return findWebElementByName("accountsPanel:accounts:" + rowNumber + ":amountToTransfer");
+    }
 }

@@ -17,12 +17,10 @@
 package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 
 import java.util.List;
-
 import jdave.Group;
 import jdave.webdriver.WebDriverSpecRunner;
 import jdave.webdriver.elements.Find;
 import jdave.webdriver.elements.TextBox;
-
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.webdriver.KansanpankkiWebDriverSpecification;
 import org.openqa.selenium.By;
@@ -61,11 +59,13 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
         }
         
         public void amountToTransferTextFieldsThatHasZeroBalanceIsNotEnabled() {
-        	specify(context.findWebElementByName("accountsPanel:accounts:1:amountToTransfer").isEnabled(), does.equal(false));
+            WebElement transferAmountElement = context.getTransferAmountTextBoxOf(1);
+            specify(transferAmountElement.isEnabled(), does.equal(false));
         }
-        
+
         public void amountToTransferTextFieldsThatHasBalanceIsEnabled() {
-        	specify(context.findWebElementByName("accountsPanel:accounts:2:amountToTransfer").isEnabled(), does.equal(true));
+            WebElement transferAmountElement = context.getTransferAmountTextBoxOf(2);
+            specify(transferAmountElement.isEnabled());
         }
         
         public void showsTargetAccountNumbers() {
