@@ -59,9 +59,7 @@ public class Account implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Account account = (Account) o;
-
         return accountId.equals(account.accountId);
     }
 

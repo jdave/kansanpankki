@@ -59,14 +59,15 @@ public class AccountsPanel extends Panel {
 						.getDefaultModelObjectAsString()));
 			}
 		});
-		Form<?> form = new Form<Void>("newAccountForm");
-		form.add(new TextField<String>("accountNumber", new Model<String>()));
-		form.add(new AjaxButton("addAccountButton") {
+		final Form<Account> accountForm = new Form<Account>("newAccountForm");
+		final TextField<String> accountNumberField = new TextField<String>("accountNumber", new Model<String>());
+		accountForm.add(accountNumberField);
+		accountForm.add(new AjaxButton("addAccountButton") {
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-				accountRepository.addAccount(new Account(""));
+				accountRepository.addAccount(new Account(accountNumberField.getDefaultModelObjectAsString()));
 				target.addComponent(AccountsPanel.this);
 			}});
-		add(form);
+		add(accountForm);
 	}
 }
