@@ -28,24 +28,24 @@ import org.laughingpanda.kansanpankki.domain.Account;
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 public class AccountPage extends WebPage {
-	private final Page accountsPage;
+    private final Page accountsPage;
 
-	public AccountPage(IModel<Account> accountModel, Page page) {
-		this.accountsPage = page;
-		add(new AccountIdLabel("accountHeaderId", accountModel));
-		add(new AccountIdLabel("accountId", accountModel));
-		add(new AjaxLink<Void>("back") {
-			@Override
-			public void onClick(AjaxRequestTarget target) {
-				setResponsePage(accountsPage);
-			}
-		});
-	}
-	
-	private final static class AccountIdLabel extends Label {
-		public AccountIdLabel(String id, IModel<Account> model) {
-			super(id, model);
-		}
-	}
+    public AccountPage(IModel<Account> accountModel, Page page) {
+        this.accountsPage = page;
+        add(new AccountIdLabel("accountHeaderId", accountModel));
+        add(new AccountIdLabel("accountId", accountModel));
+        add(new AjaxLink<Void>("back") {
+            @Override
+            public void onClick(AjaxRequestTarget target) {
+                setResponsePage(accountsPage);
+            }
+        });
+    }
+
+    private final static class AccountIdLabel extends Label {
+        public AccountIdLabel(String id, IModel<Account> model) {
+            super(id, model);
+        }
+    }
 }
 
