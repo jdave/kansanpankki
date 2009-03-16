@@ -16,10 +16,17 @@
  */
 package org.laughingpanda.kansanpankki.accounts;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
@@ -45,11 +52,44 @@ public class AccountsView extends DataView<Account> {
         accountLink.add(new Label("accountId", item.getDefaultModelObjectAsString()));
         item.add(new Label("balance", model.getObject().getBalance().toString()));
         item.add(accountLink);
-        item.add(new TextField<Integer>("amountToTransfer") {
+        final PossibleTargetAccounts targetAccounts = new PossibleTargetAccounts(model);
+        item.add(targetAccounts);
+        TextField<Integer> amountToTransfer = new TextField<Integer>("amountToTransfer", new Model<Integer>()) {
             @Override
             public boolean isEnabled() {
                 return !(model.getObject()).isEmpty();
             }
+        };
+        amountToTransfer.add(new OnChangeAjaxBehavior() {
+            @Override
+            protected void onUpdate(AjaxRequestTarget target) {
+                targetAccounts.setVisible(true);
+                target.addComponent(targetAccounts);
+            }
         });
+        item.add(amountToTransfer);
+
+    }
+
+    private class PossibleTargetAccounts extends Panel {
+        private PossibleTargetAccounts(IModel<Account> sourceAccountModel) {
+            super("targetAccounts");
+            List<Account> possibleTargets = new ArrayList<Account>();
+            Iterator<IModel<Account>> allAccounts = getItemModels();
+            while (allAccounts.hasNext()) {
+                IModel<Account> accountModel = allAccounts.next();
+                if (!accountModel.getObject().equals(sourceAccountModel.getObject())) {
+                    possibleTargets.add(accountModel.getObject());
+                }
+            }
+            add(new ListView<Account>("list", possibleTargets) {
+                @Override
+                protected void populateItem(ListItem<Account> accountListItem) {
+                    accountListItem.add(new Label("targetAccountId", accountListItem.getDefaultModel()));
+                }
+            });
+            setVisible(false);
+            setOutputMarkupPlaceholderTag(true);
+        }
     }
 }

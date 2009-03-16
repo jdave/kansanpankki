@@ -16,18 +16,17 @@
  */
 package org.laughingpanda.kansanpankki.accounts;
 
-import static org.hamcrest.Matchers.is;
-
 import java.util.Arrays;
 import java.util.List;
-
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
-
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.tester.DummyHomePage;
+import static org.hamcrest.Matchers.is;
 import org.jmock.Expectations;
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.domain.Account;
@@ -53,22 +52,39 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
             TextField<?> amountToTransfer = selectFirst(TextField.class).from(row);
             specify(amountToTransfer.isEnabled(), does.equal(false));
         }
+
+        public void hasListOfPossibleTargetAccountsHidden() {
+            WebMarkupContainer targetAccounts = selectFirst(WebMarkupContainer.class, "targetAccounts").from(row);
+            specify(targetAccounts.isVisible(), does.equal(false));
+        }
     }
 
     public class RowOfAccountWith9500Euros {
         private Item<Account> row;
+        private TextField<?> amountToTransferField;
 
         public AccountsView create() {
             AccountsView accountsView = startComponent();
             row = selectFirst(Item.class).which(is(accountWithMoney)).from(accountsView);
+            amountToTransferField = selectFirst(TextField.class).from(row);
             return accountsView;
         }
 
         public void hasTransferAmountTextFieldEnabled() {
-            TextField<?> amountToTransfer = selectFirst(TextField.class).from(row);
-            specify(amountToTransfer.isEnabled());
+            specify(amountToTransferField.isEnabled());
         }
-        
+
+        public void showsListOfPossibleTargetAccountsAfterEnteringAmountToTransfer() {
+            wicket.getServletRequest().setParameter(amountToTransferField.getInputName(), "500");
+            wicket.executeAjaxEvent(amountToTransferField, "onchange");
+
+            WebMarkupContainer targetAccounts = selectFirst(WebMarkupContainer.class, "targetAccounts").from(row);
+            specify(targetAccounts.isVisible());
+            List<Label> targetAccountLabels = selectAll(Label.class).from(targetAccounts);
+            specify(targetAccountLabels.size(), does.equal(1));
+            specify(targetAccountLabels.get(0).getDefaultModelObject(), does.equal(emptyAccount));
+        }
+
         public void containsBalanceLabel() {
         	List<Label> balanceLabels = selectAll(Label.class, "balance").from(context);
         	specify(balanceLabels.get(1).getDefaultModelObjectAsString(), does.equal("9500 euros"));
@@ -81,6 +97,10 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
         checking(new Expectations() {{
             atLeast(1).of(repository).findAllAccounts(); will(returnValue(Arrays.asList(emptyAccount, accountWithMoney)));
         }});
-        return new AccountsView(id, new AccountsDataProvider(repository));
+        AccountsView accountsView = new AccountsView("accounts", new AccountsDataProvider(repository));
+        AccountsPanel accountsPanel = new AccountsPanel("accountsPanel");
+        accountsPanel.replace(accountsView);
+        new DummyHomePage().add(accountsPanel);
+        return accountsView;
     }
 }
