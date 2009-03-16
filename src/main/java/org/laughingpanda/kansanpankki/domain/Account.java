@@ -19,19 +19,9 @@ package org.laughingpanda.kansanpankki.domain;
 import java.io.Serializable;
 
 public class Account implements Serializable {
-	private String accountId;
-	private Money balance = Money.euros(0);
-	
+    private Money balance = Money.euros(0);
 
-	public Account(String accountId) {
-		this.accountId = accountId;
-	}
-
-	public String getAccountId() {
-		return accountId;
-	}
-	
-	    public Money getBalance() {
+    public Money getBalance() {
         return balance;
     }
 

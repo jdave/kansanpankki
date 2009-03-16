@@ -18,7 +18,6 @@ package org.laughingpanda.kansanpankki.account;
 
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
-
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -30,7 +29,7 @@ import org.laughingpanda.kansanpankki.domain.Account;
  */
 @RunWith(JDaveRunner.class)
 public class AccountPageSpec extends ComponentSpecification<AccountPage, Account> {
-	private Account account = new Account("");
+	private Account account = new Account();
 	public class Any {
 		public AccountPage create() {
 			return startComponent(new Model<Account>(account));
