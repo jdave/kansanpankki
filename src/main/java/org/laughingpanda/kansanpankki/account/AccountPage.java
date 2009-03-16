@@ -30,14 +30,14 @@ import org.laughingpanda.kansanpankki.domain.Account;
 public class AccountPage extends WebPage {
     private final Page accountsPage;
 
-    public AccountPage(IModel<Account> accountModel, Page page) {
-        this.accountsPage = page;
+    public AccountPage(IModel<Account> accountModel, Page accountsPage) {
+        this.accountsPage = accountsPage;
         add(new AccountIdLabel("accountHeaderId", accountModel));
         add(new AccountIdLabel("accountId", accountModel));
         add(new AjaxLink<Void>("back") {
             @Override
             public void onClick(AjaxRequestTarget target) {
-                setResponsePage(accountsPage);
+                setResponsePage(AccountPage.this.accountsPage);
             }
         });
     }
