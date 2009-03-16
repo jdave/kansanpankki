@@ -74,9 +74,13 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
             specify(amountToTransferField.isEnabled());
         }
 
+        public void containsBalanceLabel() {
+        	List<Label> balanceLabels = selectAll(Label.class, "balance").from(context);
+        	specify(balanceLabels.get(1).getDefaultModelObjectAsString(), does.equal("9500 euros"));
+        }
+
         public void showsListOfPossibleTargetAccountsAfterEnteringAmountToTransfer() {
-            wicket.getServletRequest().setParameter(amountToTransferField.getInputName(), "500");
-            wicket.executeAjaxEvent(amountToTransferField, "onchange");
+            enterAmountToTransfer("500");
 
             WebMarkupContainer targetAccounts = selectFirst(WebMarkupContainer.class, "targetAccounts").from(row);
             specify(targetAccounts.isVisible());
@@ -85,9 +89,9 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
             specify(targetAccountLabels.get(0).getDefaultModelObject(), does.equal(emptyAccount));
         }
 
-        public void containsBalanceLabel() {
-        	List<Label> balanceLabels = selectAll(Label.class, "balance").from(context);
-        	specify(balanceLabels.get(1).getDefaultModelObjectAsString(), does.equal("9500 euros"));
+        private void enterAmountToTransfer(String amountToTransfer) {
+            wicket.getServletRequest().setParameter(amountToTransferField.getInputName(), amountToTransfer);
+            wicket.executeAjaxEvent(amountToTransferField, "onchange");
         }
     }
 
