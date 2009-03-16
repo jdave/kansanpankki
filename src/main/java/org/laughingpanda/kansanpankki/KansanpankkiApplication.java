@@ -28,4 +28,8 @@ public class KansanpankkiApplication extends WebApplication {
 	public Class<? extends Page> getHomePage() {
 		return HomePage.class;
 	}
+
+    @Override
+    protected void outputDevelopmentModeWarning() {
+    }
 }
