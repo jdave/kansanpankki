@@ -17,8 +17,10 @@
 package org.laughingpanda.kansanpankki.accounts;
 
 import java.util.List;
+
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
@@ -61,7 +63,7 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Acc
         public void accountLinkCanBeClicked() {
             wicket.executeAjaxEvent(accountLinks().get(0), "onclick");
         }
-
+        
         public void newAccountCanBeAdded() {
             checking(new Expectations() {{
                 one(accountRepository).addAccount(new Account("1111-2222"));

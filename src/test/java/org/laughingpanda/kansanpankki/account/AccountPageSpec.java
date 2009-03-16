@@ -18,12 +18,13 @@ package org.laughingpanda.kansanpankki.account;
 
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
+
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.tester.DummyHomePage;
 import org.junit.runner.RunWith;
-import org.laughingpanda.kansanpankki.accounts.HomePage;
 import org.laughingpanda.kansanpankki.domain.Account;
 
 /**
@@ -32,8 +33,9 @@ import org.laughingpanda.kansanpankki.domain.Account;
 @RunWith(JDaveRunner.class)
 public class AccountPageSpec extends ComponentSpecification<AccountPage, Account> {
     private Account account = new Account("");
+	private DummyHomePage dummyPage;
 
-    public class Any {
+	public class Any {
         public AccountPage create() {
             return startComponent(new Model<Account>(account));
         }
@@ -48,13 +50,22 @@ public class AccountPageSpec extends ComponentSpecification<AccountPage, Account
         }
 
         public void containsBackLink() {
-            AjaxLink<Void> backLink = selectFirst(AjaxLink.class, "back").from(context);
-            specify(backLink, isNotNull());
+            specify(backLink(), isNotNull());
+        }
+
+        public void whenBackLinkIsClickedRedirectsToSameHomePageInstance() {
+        	wicket.executeAjaxEvent(backLink(), "onclick");
+        	specify(wicket.getLastRenderedPage(), does.equal(dummyPage));
         }
     }
 
+    private AjaxLink<Void> backLink() {
+    	return selectFirst(AjaxLink.class, "back").from(context);
+    }
+    
     @Override
     protected AccountPage newComponent(String id, IModel<Account> model) {
-        return new AccountPage(model, new HomePage());
+        dummyPage = new DummyHomePage();
+		return new AccountPage(model, dummyPage);
     }
 }
