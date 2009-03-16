@@ -25,6 +25,8 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.protocol.http.MockHttpServletRequest;
+import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.util.tester.DummyHomePage;
 import static org.hamcrest.Matchers.is;
 import org.jmock.Expectations;
@@ -61,7 +63,7 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
 
     public class RowOfAccountWith9500Euros {
         private Item<Account> row;
-        private TextField<?> amountToTransferField;
+        private TextField<Integer> amountToTransferField;
 
         public AccountsView create() {
             AccountsView accountsView = startComponent();
@@ -89,8 +91,19 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
             specify(targetAccountLabels.get(0).getDefaultModelObject(), does.equal(emptyAccount));
         }
 
+        public void showsAmountToTransferInTargetAccountList() {
+            enterAmountToTransfer("400");
+
+            WebMarkupContainer targetAccounts = selectFirst(WebMarkupContainer.class, "targetAccounts").from(row);
+            List<Label> targetAmountLabels = selectAll(Label.class, "targetAmount").from(targetAccounts);
+            specify(targetAmountLabels.size(), does.equal(1));
+            specify(targetAmountLabels.get(0).getDefaultModelObjectAsString(), does.equal("400 euros"));
+        }
+
         private void enterAmountToTransfer(String amountToTransfer) {
-            wicket.getServletRequest().setParameter(amountToTransferField.getInputName(), amountToTransfer);
+            MockHttpServletRequest request = wicket.getServletRequest();
+            request.setParameter(amountToTransferField.getInputName(), amountToTransfer);
+            ((ServletWebRequest) wicket.getWicketRequest()).setAjax(true);
             wicket.executeAjaxEvent(amountToTransferField, "onchange");
         }
     }

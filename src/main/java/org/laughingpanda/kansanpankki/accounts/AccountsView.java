@@ -30,10 +30,12 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.laughingpanda.kansanpankki.account.AccountPage;
 import org.laughingpanda.kansanpankki.domain.Account;
+import org.laughingpanda.kansanpankki.domain.Money;
 
 public class AccountsView extends DataView<Account> {
     AccountsView(String id, IDataProvider<Account> dataProvider) {
@@ -54,24 +56,33 @@ public class AccountsView extends DataView<Account> {
         item.add(accountLink);
         final PossibleTargetAccounts targetAccounts = new PossibleTargetAccounts(model);
         item.add(targetAccounts);
-        TextField<Integer> amountToTransfer = new TextField<Integer>("amountToTransfer", new Model<Integer>()) {
+        final TextField<Integer> amountToTransfer = new TextField<Integer>("amountToTransfer", new Model<Integer>()) {
             @Override
             public boolean isEnabled() {
                 return !(model.getObject()).isEmpty();
             }
         };
+        amountToTransfer.setType(Integer.class);
         amountToTransfer.add(new OnChangeAjaxBehavior() {
             @Override
             protected void onUpdate(AjaxRequestTarget target) {
-                targetAccounts.setVisible(true);
+                if (amountToTransfer.getModelObject() == null) {
+                    targetAccounts.setVisible(false);
+                } else {
+                    targetAccounts.setVisible(true);
+                    targetAccounts.setAmountToTransfer(Money.euros(amountToTransfer.getModelObject()));
+                }
                 target.addComponent(targetAccounts);
             }
+
         });
         item.add(amountToTransfer);
 
     }
 
     private class PossibleTargetAccounts extends Panel {
+        private Money amountToTransfer;
+
         private PossibleTargetAccounts(IModel<Account> sourceAccountModel) {
             super("targetAccounts");
             List<Account> possibleTargets = new ArrayList<Account>();
@@ -84,12 +95,22 @@ public class AccountsView extends DataView<Account> {
             }
             add(new ListView<Account>("list", possibleTargets) {
                 @Override
-                protected void populateItem(ListItem<Account> accountListItem) {
+                protected void populateItem(final ListItem<Account> accountListItem) {
+                    accountListItem.add(new Label("targetAmount", new AbstractReadOnlyModel<Money>() {
+                        @Override
+                        public Money getObject() {
+                            return amountToTransfer;
+                        }
+                    }));
                     accountListItem.add(new Label("targetAccountId", accountListItem.getDefaultModel()));
                 }
             });
             setVisible(false);
             setOutputMarkupPlaceholderTag(true);
+        }
+
+        public void setAmountToTransfer(Money amountToTransfer) {
+            this.amountToTransfer = amountToTransfer;
         }
     }
 }
