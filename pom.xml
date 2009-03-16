@@ -39,7 +39,7 @@
         <configuration>
           <useFile>false</useFile>
           <includes>
-            <include>**/*Spec.java</include>
+            <include>**/Kansanpankki*Suite.java</include>
           </includes>
           <systemProperties>
             <property>
@@ -49,6 +49,10 @@
             <property>
               <name>jdave.tools.specdox.dir</name>
               <value>target/jdave</value>
+            </property>
+            <property>
+              <name>webdriver.firefox.bin</name>
+              <value>firefox-2</value>
             </property>
           </systemProperties>
         </configuration>
