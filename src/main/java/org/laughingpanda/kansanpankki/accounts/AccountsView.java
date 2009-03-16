@@ -19,7 +19,6 @@ package org.laughingpanda.kansanpankki.accounts;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -75,10 +74,8 @@ public class AccountsView extends DataView<Account> {
                 }
                 target.addComponent(targetAccounts);
             }
-
         });
         item.add(amountToTransfer);
-
     }
 
     private class PossibleTargetAccounts extends Panel {
@@ -103,21 +100,8 @@ public class AccountsView extends DataView<Account> {
                             return amountToTransfer;
                         }
                     }));
-                    AjaxLink<Account> transferLink = new AjaxLink<Account>("doTransfer", accountListItem.getModel()) {
-                        @Override
-                        public void onClick(final AjaxRequestTarget target) {
-                            Account sourceAccount = sourceAccountModel.getObject();
-                            Account targetAccount = getModelObject();
-                            sourceAccount.transfer(amountToTransfer).to(targetAccount);
-                            getPage().visitChildren(TransferListener.class, new IVisitor<Component>() {
-                                @Override
-                                public Object component(Component component) {
-                                    target.addComponent(component);
-                                    return CONTINUE_TRAVERSAL;
-                                }
-                            });
-                        }
-                    };
+                    IModel<Account> targetAccountModel = accountListItem.getModel();
+                    AjaxLink<Account> transferLink = new TransferLink(targetAccountModel, sourceAccountModel, amountToTransfer);
                     accountListItem.add(transferLink);
                     transferLink.add(new Label("targetAccountId", accountListItem.getDefaultModel()));
                 }
