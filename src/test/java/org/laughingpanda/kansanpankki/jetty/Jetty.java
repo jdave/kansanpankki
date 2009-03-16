@@ -25,7 +25,6 @@ import org.mortbay.jetty.webapp.WebAppContext;
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 public class Jetty {
-    private static final int PORT = 8080;
     protected static final String CONTEXT_PATH = "/kansanpankki";
     private static final String WAR = "src/main/webapp";
 	private Server server;
@@ -36,7 +35,10 @@ public class Jetty {
     
     public Server start() {
         server = new Server();
-        server.setConnectors(getConnectors());
+        SelectChannelConnector connector = new SelectChannelConnector();
+        connector.setPort(getPort());
+
+        server.setConnectors(new Connector[]{connector});
         server.addHandler(getWebApplicationContext());
         startServer();
         joinServer();
@@ -68,17 +70,14 @@ public class Jetty {
         server = null;
     }
 
-    protected Connector[] getConnectors() {
-        SelectChannelConnector connector = new SelectChannelConnector();
-        connector.setPort(PORT);
-
-        return new Connector[] { connector };
+    protected int getPort() {
+        return 8080;
     }
-    
+
     private void startServer() {
         try {
             server.start();
-            System.out.println("Kansanpankki now running at http://localhost:" + PORT + CONTEXT_PATH + "/");
+            System.out.println("Kansanpankki now running at http://localhost:" + getPort() + CONTEXT_PATH + "/");
         } catch (Exception e1) {
             throw new RuntimeException(e1);
         }
