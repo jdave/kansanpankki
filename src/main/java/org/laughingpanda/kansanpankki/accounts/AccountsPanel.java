@@ -43,7 +43,7 @@ public class AccountsPanel extends Panel {
 			}
 		});
 		Form<?> form = new Form<Void>("newAccountForm");
-		form.add(new TextField("accountNumber", new Model()));
+		form.add(new TextField<String>("accountNumber", new Model<String>()));
 		form.add(new AjaxButton("addAccountButton") {
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
