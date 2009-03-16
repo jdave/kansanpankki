@@ -17,10 +17,8 @@
 package org.laughingpanda.kansanpankki.accounts;
 
 import java.util.List;
-
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
@@ -97,9 +95,9 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Acc
     private DataView<Account> accountsView() {
         return selectFirst(DataView.class, "accounts").from(context);
     }
-    
+
     private Form<Account> form() {
-    	return selectFirst(Form.class, "newAccountForm").from(context);
+        return selectFirst(Form.class, "newAccountForm").from(context);
     }
 
     @Override
