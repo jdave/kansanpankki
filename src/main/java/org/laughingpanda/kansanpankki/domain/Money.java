@@ -54,9 +54,7 @@ public class Money implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Money money = (Money) o;
-
         return amountOfEuros == money.amountOfEuros;
     }
 
@@ -64,5 +62,4 @@ public class Money implements Serializable {
     public final int hashCode() {
         return amountOfEuros;
     }
-
 }
