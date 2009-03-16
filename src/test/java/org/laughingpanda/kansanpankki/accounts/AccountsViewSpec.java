@@ -100,6 +100,14 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
             specify(targetAmountLabels.get(0).getDefaultModelObjectAsString(), does.equal("400 euros"));
         }
 
+        public void hidesListOfPossibleTargetAccountsAfterEmptyingAmountToTransfer() {
+            enterAmountToTransfer("500");
+            enterAmountToTransfer("");
+
+            WebMarkupContainer targetAccounts = selectFirst(WebMarkupContainer.class, "targetAccounts").from(row);
+            specify(targetAccounts.isVisible(), does.equal(false));
+        }
+
         private void enterAmountToTransfer(String amountToTransfer) {
             MockHttpServletRequest request = wicket.getServletRequest();
             request.setParameter(amountToTransferField.getInputName(), amountToTransfer);
