@@ -64,7 +64,7 @@ public class AccountsPanel extends Panel {
 		form.add(new AjaxButton("addAccountButton") {
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-				accountRepository.addAccount(new Account());
+				accountRepository.addAccount(new Account(""));
 				target.addComponent(AccountsPanel.this);
 			}});
 		add(form);

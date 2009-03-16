@@ -16,30 +16,26 @@
  */
 package org.laughingpanda.kansanpankki;
 
-import org.apache.wicket.IConverterLocator;
-import org.apache.wicket.Page;
-import org.apache.wicket.protocol.http.WebApplication;
-import org.apache.wicket.util.convert.ConverterLocator;
-import org.laughingpanda.kansanpankki.accounts.HomePage;
+import java.util.Locale;
+
+import org.apache.wicket.util.convert.IConverter;
 import org.laughingpanda.kansanpankki.domain.Account;
+
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
-public class KansanpankkiApplication extends WebApplication {
-    @Override
-    public Class<? extends Page> getHomePage() {
-        return HomePage.class;
-    }
-    
-    @Override
-    protected IConverterLocator newConverterLocator() {
-    	ConverterLocator converterLocator = new ConverterLocator();
-    	converterLocator.set(Account.class, new AccountConverter());
-    	return converterLocator;
-    }
+public class AccountConverter implements IConverter {
 
-    @Override
-    protected void outputDevelopmentModeWarning() {
-    }
+	@Override
+	public Object convertToObject(String value, Locale locale) {
+		throw new NotImplementedException();
+	}
+
+	@Override
+	public String convertToString(Object value, Locale locale) {
+		Account account = (Account) value;
+		return account.getAccountId();
+	}
 }

@@ -16,30 +16,37 @@
  */
 package org.laughingpanda.kansanpankki;
 
-import org.apache.wicket.IConverterLocator;
-import org.apache.wicket.Page;
-import org.apache.wicket.protocol.http.WebApplication;
-import org.apache.wicket.util.convert.ConverterLocator;
-import org.laughingpanda.kansanpankki.accounts.HomePage;
+import java.util.Locale;
+
+import jdave.Block;
+import jdave.Specification;
+import jdave.junit4.JDaveRunner;
+
+import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.domain.Account;
+
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
-public class KansanpankkiApplication extends WebApplication {
-    @Override
-    public Class<? extends Page> getHomePage() {
-        return HomePage.class;
-    }
-    
-    @Override
-    protected IConverterLocator newConverterLocator() {
-    	ConverterLocator converterLocator = new ConverterLocator();
-    	converterLocator.set(Account.class, new AccountConverter());
-    	return converterLocator;
-    }
-
-    @Override
-    protected void outputDevelopmentModeWarning() {
+@RunWith(JDaveRunner.class)
+public class AccountConverterSpec extends Specification<AccountConverter> {
+    public class Any {
+    	public AccountConverter create() {
+    		return new AccountConverter();
+    	}
+    	
+    	public void canConvertToString() {
+    		specify(context.convertToString(new Account("9500-12345"), new Locale("fi")), does.equal("9500-12345"));
+    	}
+    	
+    	public void throwsExceptionWhenTryingToConvertObject() {
+    		specify(new Block() {
+                public void run() throws Throwable {
+                	context.convertToObject(("9500-12345"), new Locale("fi"));
+                }
+            }, should.raise(NotImplementedException.class));
+    	}
     }
 }

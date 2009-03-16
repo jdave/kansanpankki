@@ -30,7 +30,7 @@ import org.laughingpanda.kansanpankki.domain.Account;
  */
 @RunWith(JDaveRunner.class)
 public class AccountPageSpec extends ComponentSpecification<AccountPage, Account> {
-	private Account account = new Account();
+	private Account account = new Account("");
 	public class Any {
 		public AccountPage create() {
 			return startComponent(new Model<Account>(account));
