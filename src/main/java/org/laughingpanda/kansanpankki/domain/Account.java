@@ -19,4 +19,25 @@ package org.laughingpanda.kansanpankki.domain;
 import java.io.Serializable;
 
 public class Account implements Serializable {
+    private Money balance = Money.euros(0);
+
+    public Money getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Money balance) {
+        this.balance = balance;
+    }
+
+    public void save(Money money) {
+        balance = balance.add(money);
+    }
+
+    public void withdraw(Money money) {
+        if (balance.lessThan(money)) {
+            throw new IllegalArgumentException("Cannot withdraw " + money +
+                    " from an account that has only " + balance);
+        }
+        balance = balance.subtract(money);
+    }
 }
