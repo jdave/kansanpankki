@@ -55,12 +55,20 @@ public class AccountSpec extends Specification<Account> {
         public void hasBalanceOfZero() {
             specify(context.getBalance(), does.equal(Money.euros(0)));
         }
+
+        public void isEmpty() {
+            specify(context.isEmpty());
+        }
     }
 
     public class EmptyAccount {
         public Account create() {
             account.save(Money.euros(0));
             return account;
+        }
+
+        public void isEmpty() {
+            specify(context.isEmpty());
         }
 
         public void hasBalanceOf9500EurosAfterSaving9500Euros() {
@@ -75,6 +83,10 @@ public class AccountSpec extends Specification<Account> {
         public Account create() {
             account.save(Money.euros(50));
             return account;
+        }
+
+        public void isNotEmpty() {
+            specify(context.isEmpty(), does.equal(false));
         }
 
         public void hasBalanceOf80EurosAfterSaving30Euros() {
@@ -117,6 +129,11 @@ public class AccountSpec extends Specification<Account> {
                 }
             }, does.raise(Exception.class));
             specify(context.getBalance(), does.equal(Money.euros(50)));
+        }
+
+        public void becomesEmptyAfterWithDrawing50Euros() {
+            context.withdraw(Money.euros(50));
+            specify(context.isEmpty());
         }
     }
 }

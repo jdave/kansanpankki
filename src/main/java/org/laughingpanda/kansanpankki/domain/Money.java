@@ -41,6 +41,10 @@ public class Money implements Serializable {
         return amountOfEuros < money.amountOfEuros;
     }
 
+    public boolean isEmpty() {
+        return amountOfEuros <= 0;
+    }
+
     @Override
     public String toString() {
         return amountOfEuros + " euros";

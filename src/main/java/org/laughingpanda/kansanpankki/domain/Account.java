@@ -46,6 +46,10 @@ public class Account implements Serializable {
         balance = balance.subtract(money);
     }
 
+    public boolean isEmpty() {
+        return balance.isEmpty();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
