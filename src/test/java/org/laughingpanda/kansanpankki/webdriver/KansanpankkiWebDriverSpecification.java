@@ -17,7 +17,9 @@
 package org.laughingpanda.kansanpankki.webdriver;
 
 import jdave.Specification;
+import jdave.webdriver.Retry;
 import jdave.webdriver.WebDriverHolder;
+import jdave.webdriver.Retry.WaitForCondition;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
@@ -26,11 +28,11 @@ public class KansanpankkiWebDriverSpecification<T> extends Specification<T> {
     public void openBaseUrl() {
 		WebDriverHolder.get().navigate().to(
 				"http://localhost:8082/kansanpankki/");
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			//
-		}
+        Retry.maximumTimesOf(10).with(new WaitForCondition() {
+            public boolean isSatisfied() {
+                return textContainsInPage("</html>");
+            }
+        });
 	}
     
     public boolean textContainsInPage(String text) {
