@@ -18,7 +18,6 @@ package org.laughingpanda.kansanpankki.account;
 
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
-
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
@@ -32,29 +31,30 @@ import org.laughingpanda.kansanpankki.domain.Account;
  */
 @RunWith(JDaveRunner.class)
 public class AccountPageSpec extends ComponentSpecification<AccountPage, Account> {
-	private Account account = new Account("");
-	public class Any {
-		public AccountPage create() {
-			return startComponent(new Model<Account>(account));
-		}
+    private Account account = new Account("");
 
-		public void pageIsRendered() {
-			specify(context, isNotNull());
-		}
-		
-		public void containsAccountIdLabel() {
-			Label accountIdLabel = selectFirst(Label.class, "accountId").from(context);
-			specify(accountIdLabel.getDefaultModelObject(), does.equal(account));
-		}
-		
-		public void containsBackLink() {
-			AjaxLink<Void> backLink = selectFirst(AjaxLink.class, "back").from(context);
-			specify(backLink, isNotNull());
-		}
-	}
+    public class Any {
+        public AccountPage create() {
+            return startComponent(new Model<Account>(account));
+        }
 
-	@Override
-	protected AccountPage newComponent(String id, IModel<Account> model) {
-		return new AccountPage(model, new HomePage());
-	}
+        public void pageIsRendered() {
+            specify(context, isNotNull());
+        }
+
+        public void containsAccountIdLabel() {
+            Label accountIdLabel = selectFirst(Label.class, "accountId").from(context);
+            specify(accountIdLabel.getDefaultModelObject(), does.equal(account));
+        }
+
+        public void containsBackLink() {
+            AjaxLink<Void> backLink = selectFirst(AjaxLink.class, "back").from(context);
+            specify(backLink, isNotNull());
+        }
+    }
+
+    @Override
+    protected AccountPage newComponent(String id, IModel<Account> model) {
+        return new AccountPage(model, new HomePage());
+    }
 }
