@@ -35,7 +35,6 @@ public class HomePageWebDriverSpec extends KansanpankkiWebDriverSpecification<Ho
 
         public void showsHomePage() {
             specify(textContainsInPage("Kansan"));
-//			specify(textContainsInPage("Salary"));
         }
     }
 }
