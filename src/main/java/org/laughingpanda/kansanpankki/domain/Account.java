@@ -17,12 +17,15 @@
 package org.laughingpanda.kansanpankki.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Account implements Serializable {
 	private String accountId;
 	private Money balance = Money.euros(0);
+    private List<AccountTransaction> transactions = new ArrayList<AccountTransaction>();
 
-	public Account(String accountId) {
+    public Account(String accountId) {
 		this.accountId = accountId;
 	}
 
@@ -34,8 +37,9 @@ public class Account implements Serializable {
         return balance;
     }
 
-    public void save(Money money) {
+    public Account save(Money money) {
         balance = balance.add(money);
+        return this;
     }
 
     public void withdraw(Money money) {
@@ -52,6 +56,10 @@ public class Account implements Serializable {
 
     public Transfer transfer(Money amountToTransfer) {
         return new Transfer(amountToTransfer);
+    }
+
+    public List<AccountTransaction> getTransactions() {
+        return new ArrayList<AccountTransaction>(transactions);
     }
 
     @Override
@@ -79,8 +87,9 @@ public class Account implements Serializable {
         }
 
         public void to(Account targetAccount) {
-            withdraw(amountToTransfer);
-            targetAccount.save(amountToTransfer);
+            AccountTransaction transaction = AccountTransaction.transfer(Account.this, targetAccount, amountToTransfer);
+            transactions.add(transaction);
+            targetAccount.transactions.add(transaction);
         }
     }
 }
