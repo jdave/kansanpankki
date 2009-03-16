@@ -16,6 +16,7 @@
  */
 package org.laughingpanda.kansanpankki.account;
 
+import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebPage;
@@ -27,12 +28,16 @@ import org.laughingpanda.kansanpankki.domain.Account;
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 public class AccountPage extends WebPage {
-	public AccountPage(IModel<Account> accountModel) {
+	private final Page accountsPage;
+
+	public AccountPage(IModel<Account> accountModel, Page page) {
+		this.accountsPage = page;
 		add(new AccountIdLabel("accountHeaderId", accountModel));
 		add(new AccountIdLabel("accountId", accountModel));
 		add(new AjaxLink<Void>("back") {
 			@Override
 			public void onClick(AjaxRequestTarget target) {
+				setResponsePage(accountsPage);
 			}
 		});
 	}

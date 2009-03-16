@@ -49,9 +49,10 @@ public class AccountsPanel extends Panel {
 			protected void populateItem(Item<Account> item) {
 				IModel<Account> model = new Model<Account>(item.getModelObject());
 				AjaxLink<Account> accountLink = new AjaxLink<Account>("accountLink", model) {
+
 					@Override
 					public void onClick(AjaxRequestTarget target) {
-						setResponsePage(new AccountPage(getModel()));
+						setResponsePage(new AccountPage(getModel(), getPage()));
 					}
 				};
 				item.add(accountLink);

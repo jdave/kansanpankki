@@ -24,6 +24,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.junit.runner.RunWith;
+import org.laughingpanda.kansanpankki.accounts.HomePage;
 import org.laughingpanda.kansanpankki.domain.Account;
 
 /**
@@ -54,6 +55,6 @@ public class AccountPageSpec extends ComponentSpecification<AccountPage, Account
 
 	@Override
 	protected AccountPage newComponent(String id, IModel<Account> model) {
-		return new AccountPage(model);
+		return new AccountPage(model, new HomePage());
 	}
 }
