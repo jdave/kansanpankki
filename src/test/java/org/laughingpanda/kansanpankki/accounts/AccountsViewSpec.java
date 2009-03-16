@@ -64,11 +64,13 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
     public class RowOfAccountWith9500Euros {
         private Item<Account> row;
         private TextField<Integer> amountToTransferField;
+        private WebMarkupContainer targetAccounts;
 
         public AccountsView create() {
             AccountsView accountsView = startComponent();
             row = selectFirst(Item.class).which(is(accountWithMoney)).from(accountsView);
             amountToTransferField = selectFirst(TextField.class).from(row);
+            targetAccounts = selectFirst(WebMarkupContainer.class, "targetAccounts").from(row);
             return accountsView;
         }
 
@@ -84,7 +86,6 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
         public void showsListOfPossibleTargetAccountsAfterEnteringAmountToTransfer() {
             enterAmountToTransfer("500");
 
-            WebMarkupContainer targetAccounts = selectFirst(WebMarkupContainer.class, "targetAccounts").from(row);
             specify(targetAccounts.isVisible());
             List<Label> targetAccountLabels = selectAll(Label.class, "targetAccountId").from(targetAccounts);
             specify(targetAccountLabels.size(), does.equal(1));
@@ -94,7 +95,6 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
         public void showsAmountToTransferInTargetAccountList() {
             enterAmountToTransfer("400");
 
-            WebMarkupContainer targetAccounts = selectFirst(WebMarkupContainer.class, "targetAccounts").from(row);
             List<Label> targetAmountLabels = selectAll(Label.class, "targetAmount").from(targetAccounts);
             specify(targetAmountLabels.size(), does.equal(1));
             specify(targetAmountLabels.get(0).getDefaultModelObjectAsString(), does.equal("400 euros"));
@@ -104,7 +104,6 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
             enterAmountToTransfer("500");
             enterAmountToTransfer("");
 
-            WebMarkupContainer targetAccounts = selectFirst(WebMarkupContainer.class, "targetAccounts").from(row);
             specify(targetAccounts.isVisible(), does.equal(false));
         }
 
