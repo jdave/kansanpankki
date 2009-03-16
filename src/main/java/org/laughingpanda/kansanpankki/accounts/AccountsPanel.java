@@ -33,7 +33,7 @@ public class AccountsPanel extends Panel {
 					@Override
 					public void onClick(AjaxRequestTarget target) {
 						PageParameters parameters = new PageParameters();
-						parameters.add("accountId", this.getDefaultModelObjectAsString());
+						parameters.add("accountId", getDefaultModelObjectAsString());
 						setResponsePage(AccountPage.class, parameters);
 					}
 				};
@@ -42,7 +42,7 @@ public class AccountsPanel extends Panel {
 						.getDefaultModelObjectAsString()));
 			}
 		});
-		Form form = new Form("newAccountForm");
+		Form<?> form = new Form<Void>("newAccountForm");
 		form.add(new TextField("accountNumber", new Model()));
 		form.add(new AjaxButton("addAccountButton") {
 			@Override
