@@ -18,17 +18,32 @@ package org.laughingpanda.kansanpankki.webdriver;
 
 import jdave.Specification;
 import jdave.webdriver.Retry;
-import jdave.webdriver.WebDriverHolder;
 import jdave.webdriver.Retry.WaitForCondition;
+import jdave.webdriver.WebDriverHolder;
+import org.laughingpanda.kansanpankki.jetty.WebDriverJettyStarter;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 public class KansanpankkiWebDriverSpecification<T> extends Specification<T> {
+    private WebDriverJettyStarter jettyStarter;
+
+    @Override
+    public void create() throws Exception {
+        jettyStarter = new WebDriverJettyStarter();
+        jettyStarter.start();
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        jettyStarter.stop();
+    }
+
     public void openBaseUrl() {
 		WebDriverHolder.get().navigate().to(
-				"http://localhost:8082/kansanpankki/");
+				"http://localhost:" + jettyStarter.getPort() + "/kansanpankki/");
         Retry.maximumTimesOf(10).with(new WaitForCondition() {
+            @Override
             public boolean isSatisfied() {
                 return textContainsInPage("</html>");
             }

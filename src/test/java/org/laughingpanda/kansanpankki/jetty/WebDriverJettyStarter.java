@@ -27,7 +27,16 @@ public class WebDriverJettyStarter extends Jetty {
     }
 
     @Override
-    protected int getPort() {
+    public void start() {
+        try {
+            super.start();
+        } catch (Exception e) {
+            System.out.println("Jetty already running in port " + getPort());
+        }
+    }
+
+    @Override
+    public int getPort() {
         return PORT;
     }
 }

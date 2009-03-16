@@ -39,7 +39,7 @@
         <configuration>
           <useFile>false</useFile>
           <includes>
-            <include>**/Kansanpankki*Suite.java</include>
+            <include>**/*Spec.java</include>
           </includes>
           <systemProperties>
             <property>
@@ -56,6 +56,13 @@
             </property>
           </systemProperties>
         </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.5</version>
+          </dependency>
+        </dependencies>
       </plugin>
       <plugin>
         <artifactId>maven-eclipse-plugin</artifactId>
@@ -123,6 +130,12 @@
       <groupId>org.jdave</groupId>
       <artifactId>jdave-wicket-webdriver</artifactId>
       <version>1.2-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.5</version>
       <scope>test</scope>
     </dependency>
     <dependency>

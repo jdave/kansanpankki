@@ -16,6 +16,7 @@
  */
 package org.laughingpanda.kansanpankki.jetty;
 
+import java.net.BindException;
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.nio.SelectChannelConnector;
@@ -33,7 +34,7 @@ public class Jetty {
         new Jetty().start();
     }
     
-    public Server start() {
+    public void start() throws BindException {
         server = new Server();
         SelectChannelConnector connector = new SelectChannelConnector();
         connector.setPort(getPort());
@@ -42,11 +43,11 @@ public class Jetty {
         server.addHandler(getWebApplicationContext());
         startServer();
         joinServer();
-        return server;
     }
     
     private void joinServer() {
         new Thread(new Runnable() {
+            @Override
             public void run() {
                 try {
                     server.join();
