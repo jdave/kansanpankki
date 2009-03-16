@@ -17,11 +17,8 @@
 package org.laughingpanda.kansanpankki;
 
 import java.util.Locale;
-
 import org.apache.wicket.util.convert.IConverter;
 import org.laughingpanda.kansanpankki.domain.Account;
-
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
@@ -30,7 +27,7 @@ public class AccountConverter implements IConverter {
 
 	@Override
 	public Object convertToObject(String value, Locale locale) {
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException();
 	}
 
 	@Override

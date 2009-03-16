@@ -22,7 +22,6 @@ import jdave.Specification;
 import jdave.junit4.JDaveRunner;
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.domain.Account;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
@@ -44,7 +43,7 @@ public class AccountConverterSpec extends Specification<AccountConverter> {
                 public void run() throws Throwable {
                 	context.convertToObject(("9500-12345"), new Locale("fi"));
                 }
-            }, should.raise(NotImplementedException.class));
+            }, should.raise(UnsupportedOperationException.class));
     	}
     }
 }
