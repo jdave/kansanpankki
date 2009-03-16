@@ -17,9 +17,11 @@
 package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 
 import java.util.List;
+
 import jdave.webdriver.WebDriverHolder;
 import jdave.webdriver.elements.Find;
 import jdave.webdriver.elements.Link;
+
 import org.laughingpanda.kansanpankki.webdriver.BaseElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -29,13 +31,18 @@ import org.openqa.selenium.WebElement;
  */
 public class AccountsPanelElements extends BaseElements {
     public List<WebElement> getAccountLabels() {
-        WebElement accountList = WebDriverHolder.get().findElement(By.id("accounts"));
+        WebElement accountList = getAccounts();
         return accountList.findElements(By.id("account"));
     }
 
     public List<WebElement> getAccountLinks() {
-        WebElement accountList = WebDriverHolder.get().findElement(By.id("accounts"));
+        WebElement accountList = getAccounts();
         return accountList.findElements(By.id("account"));
+    }
+
+    public List<WebElement> getBalanceLabels() {
+        WebElement accountList = getAccounts();
+        return accountList.findElements(By.id("balance"));
     }
 
     public void clickFirstAccountLink() {
@@ -50,5 +57,9 @@ public class AccountsPanelElements extends BaseElements {
     public void clickAddAccountButton() {
         Link addAccount = Find.link(By.name("addAccountButton"));
         addAccount.click();
+    }
+
+    private WebElement getAccounts() {
+    	return WebDriverHolder.get().findElement(By.id("accounts"));
     }
 }

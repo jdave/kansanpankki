@@ -18,6 +18,7 @@ package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 
 import jdave.Group;
 import jdave.webdriver.WebDriverSpecRunner;
+
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.webdriver.KansanpankkiWebDriverSpecification;
 
@@ -34,7 +35,7 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
         }
 
         public void containsAccountLabels() {
-            specify(context.getAccountLabels().size(), does.equal(2));
+			specify(context.getAccountLabels().size(), does.equal(2));
         }
 
         public void containsAccountLinks() {
@@ -46,6 +47,13 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
             context.clickAddAccountButton();
             specify(context.getAccountLinks().size(), does.equal(3));
             specify(context.getAccountLabels().get(2).getText(), does.equal("Salary account"));
+            specify(context.getAccountLabels().get(1).getText(), does.equal("Salary account"));
+            specify(context.getAccountLabels().get(0).getText(), does.equal("Salary account"));
+        }
+        
+        public void containsBalanceLabels() {
+        	specify(context.getBalanceLabels().get(1).getText(), does.equal("9500 euros"));
+        	specify(context.getBalanceLabels().get(0).getText(), does.equal("0 euros"));
         }
     }
 
