@@ -19,11 +19,13 @@ package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 import java.util.List;
 
 import jdave.Group;
-import jdave.webdriver.Channel;
 import jdave.webdriver.WebDriverSpecRunner;
+import jdave.webdriver.elements.Find;
+import jdave.webdriver.elements.TextBox;
 
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.webdriver.KansanpankkiWebDriverSpecification;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -67,10 +69,8 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
         }
         
         public void showsTargetAccountNumbers() {
-			WebElement findWebElementByName = context
-					.findWebElementByName("accountsPanel:accounts:2:amountToTransfer");
-			findWebElementByName.sendKeys("100");
-			new Channel().waitForAjax();
+        	TextBox textBox = Find.textBox(By.name("accountsPanel:accounts:2:amountToTransfer"));
+        	textBox.type("100");
 			WebElement div = context.findWebElementByClassName("targetAccounts");
 			List<WebElement> transferTexts = div.getChildrenOfType("li");
 			specify(transferTexts.get(0).getText(), does.equal("Transfer 100 euros to 9500-12345"));
