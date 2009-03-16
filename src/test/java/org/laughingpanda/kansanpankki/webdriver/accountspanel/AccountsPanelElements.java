@@ -17,11 +17,9 @@
 package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 
 import java.util.List;
-
 import jdave.webdriver.WebDriverHolder;
 import jdave.webdriver.elements.Find;
 import jdave.webdriver.elements.Link;
-
 import org.laughingpanda.kansanpankki.webdriver.BaseElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -64,8 +62,7 @@ public class AccountsPanelElements extends BaseElements {
     }
 
 	public List<WebElement> getAmountToTransfer() {
-		List<WebElement> textBoxes = WebDriverHolder.get().findElements(By.id("amountToTransfer"));
-		return textBoxes;
+        return WebDriverHolder.get().findElements(By.id("amountToTransfer"));
 	}
 
 	public WebElement findWebElementByName(String name) {
