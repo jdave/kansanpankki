@@ -1,9 +1,7 @@
 package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 
 import java.util.List;
-
 import jdave.webdriver.WebDriverHolder;
-
 import org.laughingpanda.kansanpankki.webdriver.BaseElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -25,4 +23,19 @@ public class AccountsPanelElements extends BaseElements {
 	public void clickFirstAccountLink() {
 		getAccountLinks().get(0).click();
 	}
+
+    public void enterNewAccountNumber(String newAccountNumber) {
+        WebElement accountNumberElement = WebDriverHolder.get().findElement(By.id("accountNumber"));
+        accountNumberElement.sendKeys(newAccountNumber);
+    }
+
+    public void clickAddAccountButton() {
+        WebElement addAccount = WebDriverHolder.get().findElement(By.name("addAccountButton"));
+        addAccount.click();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            //
+        }
+    }
 }
