@@ -16,13 +16,18 @@
  */
 package org.laughingpanda.kansanpankki.accounts;
 
+import static org.hamcrest.Matchers.is;
+
 import java.util.Arrays;
+import java.util.List;
+
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
+
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
-import static org.hamcrest.Matchers.is;
 import org.jmock.Expectations;
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.domain.Account;
@@ -62,6 +67,11 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
         public void hasTransferAmountTextFieldEnabled() {
             TextField<?> amountToTransfer = selectFirst(TextField.class).from(row);
             specify(amountToTransfer.isEnabled());
+        }
+        
+        public void containsBalanceLabel() {
+        	List<Label> balanceLabels = selectAll(Label.class, "balance").from(context);
+        	specify(balanceLabels.get(1).getDefaultModelObjectAsString(), does.equal("9500 euros"));
         }
     }
 

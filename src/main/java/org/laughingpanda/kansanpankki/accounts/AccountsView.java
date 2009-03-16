@@ -43,6 +43,7 @@ public class AccountsView extends DataView<Account> {
             }
         };
         accountLink.add(new Label("accountId", item.getDefaultModelObjectAsString()));
+        item.add(new Label("balance", model.getObject().getBalance().toString()));
         item.add(accountLink);
         item.add(new TextField<Integer>("amountToTransfer") {
             @Override
