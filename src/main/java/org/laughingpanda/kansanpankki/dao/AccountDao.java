@@ -23,20 +23,21 @@ import org.laughingpanda.kansanpankki.domain.Account;
 import org.laughingpanda.kansanpankki.domain.AccountRepository;
 
 public class AccountDao implements AccountRepository, Serializable {
-    private List<Account> accounts = new ArrayList<Account>() {{
-        add(new Account() {
+    private List<Account> accounts = new ArrayList<Account>();
+    {
+        accounts.add(new Account() {
             @Override
             public String toString() {
                 return "9500-12345";
             }
         });
-        add(new Account() {
+        accounts.add(new Account() {
             @Override
             public String toString() {
                 return "9500-56789";
             }
         });
-    }};
+    }
 
     @Override
     public List<Account> findAllAccounts() {
