@@ -16,6 +16,8 @@
  */
 package org.laughingpanda.kansanpankki.jetty;
 
+import java.net.BindException;
+
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
@@ -30,8 +32,10 @@ public class WebDriverJettyStarter extends Jetty {
     public void start() {
         try {
             super.start();
-        } catch (Exception e) {
+        } catch (BindException e) {
             System.out.println("Jetty already running in port " + getPort());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 

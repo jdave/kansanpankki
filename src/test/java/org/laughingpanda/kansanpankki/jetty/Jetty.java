@@ -16,7 +16,6 @@
  */
 package org.laughingpanda.kansanpankki.jetty;
 
-import java.net.BindException;
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.nio.SelectChannelConnector;
@@ -34,7 +33,7 @@ public class Jetty {
         new Jetty().start();
     }
     
-    public void start() throws BindException {
+    public void start() throws Exception {
         server = new Server();
         SelectChannelConnector connector = new SelectChannelConnector();
         connector.setPort(getPort());
@@ -75,13 +74,9 @@ public class Jetty {
         return 8080;
     }
 
-    private void startServer() {
-        try {
-            server.start();
-            System.out.println("Kansanpankki now running at http://localhost:" + getPort() + CONTEXT_PATH + "/");
-        } catch (Exception e1) {
-            throw new RuntimeException(e1);
-        }
+    private void startServer() throws Exception {
+        server.start();
+        System.out.println("Kansanpankki now running at http://localhost:" + getPort() + CONTEXT_PATH + "/");
     }
     
     protected WebAppContext getWebApplicationContext() {
