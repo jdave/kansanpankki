@@ -20,7 +20,9 @@ import java.util.Arrays;
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
+import static org.hamcrest.Matchers.is;
 import org.jmock.Expectations;
 import org.junit.runner.RunWith;
 import org.laughingpanda.kansanpankki.domain.Account;
@@ -34,13 +36,32 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
     private Account accountWithMoney = new Account("9500-9500");
 
     public class RowOfEmptyAccount {
+        private Item<Account> row;
+
         public AccountsView create() {
-            return startComponent();
+            AccountsView accountsView = startComponent();
+            row = selectFirst(Item.class).which(is(emptyAccount)).from(accountsView);
+            return accountsView;
         }
 
         public void hasTransferAmountTextFieldDisabled() {
-            TextField<?> amountToTransfer = selectFirst(TextField.class, "amountToTransfer").from(context);
+            TextField<?> amountToTransfer = selectFirst(TextField.class).from(row);
             specify(amountToTransfer.isEnabled(), does.equal(false));
+        }
+    }
+
+    public class RowOfAccountWith9500Euros {
+        private Item<Account> row;
+
+        public AccountsView create() {
+            AccountsView accountsView = startComponent();
+            row = selectFirst(Item.class).which(is(accountWithMoney)).from(accountsView);
+            return accountsView;
+        }
+
+        public void hasTransferAmountTextFieldEnabled() {
+            TextField<?> amountToTransfer = selectFirst(TextField.class).from(row);
+            specify(amountToTransfer.isEnabled());
         }
     }
 

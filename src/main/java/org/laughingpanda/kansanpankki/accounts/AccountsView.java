@@ -35,7 +35,7 @@ public class AccountsView extends DataView<Account> {
 
     @Override
     protected void populateItem(Item<Account> item) {
-        IModel<Account> model = new Model<Account>(item.getModelObject());
+        final IModel<Account> model = new Model<Account>(item.getModelObject());
         AjaxLink<Account> accountLink = new AjaxLink<Account>("accountLink", model) {
             @Override
             public void onClick(AjaxRequestTarget target) {
@@ -44,6 +44,11 @@ public class AccountsView extends DataView<Account> {
         };
         accountLink.add(new Label("accountId", item.getDefaultModelObjectAsString()));
         item.add(accountLink);
-        item.add(new TextField<Integer>("amountToTransfer").setEnabled(false));
+        item.add(new TextField<Integer>("amountToTransfer") {
+            @Override
+            public boolean isEnabled() {
+                return !(model.getObject()).isEmpty();
+            }
+        });
     }
 }
