@@ -23,12 +23,12 @@ import org.junit.runner.RunWith;
 
 @RunWith(JDaveRunner.class)
 public class AccountSpec extends Specification<Account> {
-    private final Account account = new Account();
+    private final Account account = new Account("9500-00000");
 
 
     public class NewAccount {
         public Account create() {
-            return new Account();
+            return new Account("9500-00000");
         }
 
         public void hasBalanceOfZero() {

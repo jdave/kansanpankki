@@ -16,9 +16,12 @@
  */
 package org.laughingpanda.kansanpankki;
 
+import org.apache.wicket.IConverterLocator;
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.util.convert.ConverterLocator;
 import org.laughingpanda.kansanpankki.accounts.HomePage;
+import org.laughingpanda.kansanpankki.domain.Account;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
@@ -27,6 +30,13 @@ public class KansanpankkiApplication extends WebApplication {
     @Override
     public Class<? extends Page> getHomePage() {
         return HomePage.class;
+    }
+    
+    @Override
+    protected IConverterLocator newConverterLocator() {
+    	ConverterLocator converterLocator = new ConverterLocator();
+    	converterLocator.set(Account.class, new AccountConverter());
+    	return converterLocator;
     }
 
     @Override

@@ -38,7 +38,7 @@ import org.laughingpanda.kansanpankki.domain.AccountRepository;
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 @RunWith(JDaveRunner.class)
-public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Void> {
+public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Account> {
     private AccountRepository accountRepository = mock(AccountRepository.class);
 
     public class PanelContainingMultipleAccounts {
@@ -52,8 +52,6 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Voi
 
         public void containsAccountIdLabels() {
             specify(accountLabels().size(), does.equal(2));
-            specify(accountLabels().get(0).getDefaultModelObjectAsString(), does.equal("9500-12345"));
-            specify(accountLabels().get(0).getDefaultModelObjectAsString(), does.equal("9500-12345"));
         }
 
         public void containsAccountLinks() {
@@ -94,12 +92,12 @@ public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Voi
         return selectAll(Label.class, "accountId").<Label>from(accountsView());
     }
 
-    private DataView<String> accountsView() {
+    private DataView<Account> accountsView() {
         return selectFirst(DataView.class, "accounts").from(context);
     }
 
     @Override
-    protected AccountsPanel newComponent(String id, IModel<Void> model) {
+    protected AccountsPanel newComponent(String id, IModel<Account> model) {
         AccountsPanel accountsPanel = new AccountsPanel(id);
         accountsPanel.accountRepository = accountRepository;
         return accountsPanel;
