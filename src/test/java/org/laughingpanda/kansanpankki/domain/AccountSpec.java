@@ -72,11 +72,9 @@ public class AccountSpec extends Specification<Account> {
         }
 
         public void hasBalanceOf9500EurosAfterSaving9500Euros() {
-            specify(context.getBalance(), does.equal(Money.euros(0)));
             context.save(Money.euros(9500));
             specify(context.getBalance(), does.equal(Money.euros(9500)));
         }
-
     }
 
     public class AccountWithBalanceOf50Euros {
