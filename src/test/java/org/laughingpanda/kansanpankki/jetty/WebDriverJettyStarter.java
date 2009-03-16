@@ -23,7 +23,7 @@ import java.net.BindException;
  */
 public class WebDriverJettyStarter extends Jetty {
     private static final int PORT = 8082;
-    
+
     public static void main(String... args) {
         new WebDriverJettyStarter().start();
     }

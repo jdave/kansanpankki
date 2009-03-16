@@ -17,11 +17,9 @@
 package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 
 import java.util.List;
-
 import jdave.webdriver.WebDriverHolder;
 import jdave.webdriver.elements.Find;
 import jdave.webdriver.elements.Link;
-
 import org.laughingpanda.kansanpankki.webdriver.BaseElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -30,19 +28,19 @@ import org.openqa.selenium.WebElement;
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 public class AccountsPanelElements extends BaseElements {
-	public List<WebElement> getAccountLabels() {
-		WebElement accountList = WebDriverHolder.get().findElement(By.id("accounts"));
+    public List<WebElement> getAccountLabels() {
+        WebElement accountList = WebDriverHolder.get().findElement(By.id("accounts"));
         return accountList.findElements(By.id("account"));
-	}
-	
-	public List<WebElement> getAccountLinks() {
-		WebElement accountList = WebDriverHolder.get().findElement(By.id("accounts"));
+    }
+
+    public List<WebElement> getAccountLinks() {
+        WebElement accountList = WebDriverHolder.get().findElement(By.id("accounts"));
         return accountList.findElements(By.id("account"));
-	}
-	
-	public void clickFirstAccountLink() {
-		getAccountLinks().get(0).click();
-	}
+    }
+
+    public void clickFirstAccountLink() {
+        getAccountLinks().get(0).click();
+    }
 
     public void enterNewAccountNumber(String newAccountNumber) {
         WebElement accountNumberElement = WebDriverHolder.get().findElement(By.id("accountNumber"));
@@ -50,7 +48,7 @@ public class AccountsPanelElements extends BaseElements {
     }
 
     public void clickAddAccountButton() {
-    	Link addAccount = Find.link(By.name("addAccountButton"));
+        Link addAccount = Find.link(By.name("addAccountButton"));
         addAccount.click();
     }
 }

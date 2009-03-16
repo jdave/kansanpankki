@@ -24,10 +24,10 @@ import org.laughingpanda.kansanpankki.accounts.HomePage;
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 public class KansanpankkiApplication extends WebApplication {
-	@Override
-	public Class<? extends Page> getHomePage() {
-		return HomePage.class;
-	}
+    @Override
+    public Class<? extends Page> getHomePage() {
+        return HomePage.class;
+    }
 
     @Override
     protected void outputDevelopmentModeWarning() {

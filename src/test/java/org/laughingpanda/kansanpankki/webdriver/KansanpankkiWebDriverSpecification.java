@@ -40,16 +40,16 @@ public class KansanpankkiWebDriverSpecification<T> extends Specification<T> {
     }
 
     public void openBaseUrl() {
-		WebDriverHolder.get().navigate().to(
-				"http://localhost:" + jettyStarter.getPort() + "/kansanpankki/");
+        WebDriverHolder.get().navigate().to(
+                "http://localhost:" + jettyStarter.getPort() + "/kansanpankki/");
         Retry.maximumTimesOf(10).with(new WaitForCondition() {
             @Override
             public boolean isSatisfied() {
                 return textContainsInPage("</html>");
             }
         });
-	}
-    
+    }
+
     public boolean textContainsInPage(String text) {
         return WebDriverHolder.get().getPageSource().contains(text);
     }

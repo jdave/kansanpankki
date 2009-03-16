@@ -18,7 +18,6 @@ package org.laughingpanda.kansanpankki.accounts;
 
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
-
 import org.apache.wicket.model.IModel;
 import org.junit.runner.RunWith;
 
@@ -27,17 +26,18 @@ import org.junit.runner.RunWith;
  */
 @RunWith(JDaveRunner.class)
 public class HomePageSpec extends ComponentSpecification<HomePage, Void> {
-	public class Any {
-		public HomePage create() {
-			return startComponent();
-		}
-		
-		public void containsAccountsPanel() {
-			specify(selectFirst(AccountsPanel.class).from(context), isNotNull());
-		}
-	}
-	@Override
-	protected HomePage newComponent(String id, IModel<Void> model) {
-		return new HomePage();
-	}
+    public class Any {
+        public HomePage create() {
+            return startComponent();
+        }
+
+        public void containsAccountsPanel() {
+            specify(selectFirst(AccountsPanel.class).from(context), isNotNull());
+        }
+    }
+
+    @Override
+    protected HomePage newComponent(String id, IModel<Void> model) {
+        return new HomePage();
+    }
 }

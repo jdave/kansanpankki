@@ -24,6 +24,6 @@ import org.apache.wicket.markup.html.WebPage;
  */
 public class HomePage extends WebPage {
     public HomePage() {
-		add(new AccountsPanel("accountsPanel"));
-	}
+        add(new AccountsPanel("accountsPanel"));
+    }
 }

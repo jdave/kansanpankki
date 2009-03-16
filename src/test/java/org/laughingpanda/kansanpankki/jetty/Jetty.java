@@ -27,12 +27,12 @@ import org.mortbay.jetty.webapp.WebAppContext;
 public class Jetty {
     protected static final String CONTEXT_PATH = "/kansanpankki";
     private static final String WAR = "src/main/webapp";
-	private Server server;
+    private Server server;
 
     public static void main(String... args) throws Exception {
         new Jetty().start();
     }
-    
+
     public void start() throws Exception {
         server = new Server();
         SelectChannelConnector connector = new SelectChannelConnector();
@@ -43,7 +43,7 @@ public class Jetty {
         startServer();
         joinServer();
     }
-    
+
     private void joinServer() {
         new Thread(new Runnable() {
             @Override
@@ -56,7 +56,7 @@ public class Jetty {
             }
         }).start();
     }
-    
+
     public synchronized void stop() {
         if (server == null) {
             return;
@@ -78,7 +78,7 @@ public class Jetty {
         server.start();
         System.out.println("Kansanpankki now running at http://localhost:" + getPort() + CONTEXT_PATH + "/");
     }
-    
+
     protected WebAppContext getWebApplicationContext() {
         WebAppContext app = new WebAppContext();
         app.setContextPath(CONTEXT_PATH);

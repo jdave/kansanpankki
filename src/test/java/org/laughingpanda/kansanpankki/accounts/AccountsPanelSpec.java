@@ -17,10 +17,8 @@
 package org.laughingpanda.kansanpankki.accounts;
 
 import java.util.List;
-
 import jdave.junit4.JDaveRunner;
 import jdave.wicket.ComponentSpecification;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
@@ -41,69 +39,69 @@ import org.laughingpanda.kansanpankki.domain.AccountRepository;
  */
 @RunWith(JDaveRunner.class)
 public class AccountsPanelSpec extends ComponentSpecification<AccountsPanel, Void> {
-	private AccountRepository accountRepository = mock(AccountRepository.class);
+    private AccountRepository accountRepository = mock(AccountRepository.class);
 
-	public class PanelContainingMultipleAccounts {
-		public AccountsPanel create() {
-			return startComponent();
-		}
-		
-		public void containsDataView() {
-			specify(accountsView(), isNotNull());
-		}
-		
-		public void containsAccountIdLabels() {
-			specify(accountLabels().size(), does.equal(2));
-			specify(accountLabels().get(0).getDefaultModelObjectAsString(), does.equal("9500-12345"));
-			specify(accountLabels().get(0).getDefaultModelObjectAsString(), does.equal("9500-12345"));
-		}
-		
-		public void containsAccountLinks() {
-			specify(accountLinks().size(), does.equal(2));
-		}
-		
-		public void accountLinkCanBeClicked() {
-			wicket.executeAjaxEvent(accountLinks().get(0), "onclick");
-		}
-		
-		public void newAccountCanBeAdded() {
-			checking(new Expectations() {{
-				one(accountRepository).addAccount(with(any(Account.class)));
-			}});
-			FormTester form = wicket.newFormTester(selectFirst(Form.class, "newAccountForm").from(context).getPageRelativePath());
-			form.setValue("accountNumber", "1111-2222");
-			wicket.executeAjaxEvent(selectFirst(Button.class, "addAccountButton").from(context).getPageRelativePath(), "onclick");
-		}
-	}
+    public class PanelContainingMultipleAccounts {
+        public AccountsPanel create() {
+            return startComponent();
+        }
 
-	public class PanelWhenAccountLinkIsClicked {
-		public AccountsPanel create() {
-			AccountsPanel panel = startComponent();
-			wicket.executeAjaxEvent(selectAll(AjaxLink.class, "accountLink").from(panel).get(0), "onclick");
-			return panel;
-		}
-		
-		public void isInAccountPage() {
-			specify(wicket.getLastRenderedPage().getClass(), does.equal(AccountPage.class));
-		}
-	}
-	
-	private List<? extends Component> accountLinks() {
+        public void containsDataView() {
+            specify(accountsView(), isNotNull());
+        }
+
+        public void containsAccountIdLabels() {
+            specify(accountLabels().size(), does.equal(2));
+            specify(accountLabels().get(0).getDefaultModelObjectAsString(), does.equal("9500-12345"));
+            specify(accountLabels().get(0).getDefaultModelObjectAsString(), does.equal("9500-12345"));
+        }
+
+        public void containsAccountLinks() {
+            specify(accountLinks().size(), does.equal(2));
+        }
+
+        public void accountLinkCanBeClicked() {
+            wicket.executeAjaxEvent(accountLinks().get(0), "onclick");
+        }
+
+        public void newAccountCanBeAdded() {
+            checking(new Expectations() {{
+                one(accountRepository).addAccount(with(any(Account.class)));
+            }});
+            FormTester form = wicket.newFormTester(selectFirst(Form.class, "newAccountForm").from(context).getPageRelativePath());
+            form.setValue("accountNumber", "1111-2222");
+            wicket.executeAjaxEvent(selectFirst(Button.class, "addAccountButton").from(context).getPageRelativePath(), "onclick");
+        }
+    }
+
+    public class PanelWhenAccountLinkIsClicked {
+        public AccountsPanel create() {
+            AccountsPanel panel = startComponent();
+            wicket.executeAjaxEvent(selectAll(AjaxLink.class, "accountLink").from(panel).get(0), "onclick");
+            return panel;
+        }
+
+        public void isInAccountPage() {
+            specify(wicket.getLastRenderedPage().getClass(), does.equal(AccountPage.class));
+        }
+    }
+
+    private List<? extends Component> accountLinks() {
         return selectAll(AjaxLink.class, "accountLink").<AjaxLink<?>>from(accountsView());
-	}
-	
-	private List<? extends Component> accountLabels() {
-		return selectAll(Label.class, "accountId").<Label>from(accountsView());
-	}
-	
-	private DataView<String> accountsView() {
-		return selectFirst(DataView.class, "accounts").from(context);
-	}
+    }
 
-	@Override
-	protected AccountsPanel newComponent(String id, IModel<Void> model) {
-		AccountsPanel accountsPanel = new AccountsPanel(id);
-		accountsPanel.accountRepository = accountRepository;
-		return accountsPanel;
- 	}
+    private List<? extends Component> accountLabels() {
+        return selectAll(Label.class, "accountId").<Label>from(accountsView());
+    }
+
+    private DataView<String> accountsView() {
+        return selectFirst(DataView.class, "accounts").from(context);
+    }
+
+    @Override
+    protected AccountsPanel newComponent(String id, IModel<Void> model) {
+        AccountsPanel accountsPanel = new AccountsPanel(id);
+        accountsPanel.accountRepository = accountRepository;
+        return accountsPanel;
+    }
 }

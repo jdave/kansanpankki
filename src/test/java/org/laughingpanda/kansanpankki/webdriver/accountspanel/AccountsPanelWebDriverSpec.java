@@ -25,41 +25,40 @@ import org.laughingpanda.kansanpankki.webdriver.KansanpankkiWebDriverSpecificati
  * @author Marko Sibakov / Reaktor Innovations Oy
  */
 @RunWith(WebDriverSpecRunner.class)
-@Group(value = { "kansanpankki" })
+@Group(value = {"kansanpankki"})
 public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecification<AccountsPanelElements> {
-	public class PanelWithAccounts {
-		public AccountsPanelElements create() {
-			openBaseUrl();
-			return new AccountsPanelElements();
-		}
-		
-		public void containsAccountLabels() {
-	        specify(context.getAccountLabels().size(), does.equal(2));
-		}
-		
-		public void containsAccountLinks() {
-			specify(context.getAccountLinks().size(), does.equal(2));
-		}
-		
-		public void newAccountCanBeAdded() {
+    public class PanelWithAccounts {
+        public AccountsPanelElements create() {
+            openBaseUrl();
+            return new AccountsPanelElements();
+        }
+
+        public void containsAccountLabels() {
+            specify(context.getAccountLabels().size(), does.equal(2));
+        }
+
+        public void containsAccountLinks() {
+            specify(context.getAccountLinks().size(), does.equal(2));
+        }
+
+        public void newAccountCanBeAdded() {
             context.enterNewAccountNumber("1111-2222");
             context.clickAddAccountButton();
-			specify(context.getAccountLinks().size(), does.equal(3));
+            specify(context.getAccountLinks().size(), does.equal(3));
             specify(context.getAccountLabels().get(2).getText(), does.equal("Salary account"));
-		}
-
+        }
     }
-	
-	public class PanelWhenAccountLinkIsClicked {
-		public AccountsPanelElements create() {
-			openBaseUrl();
-			AccountsPanelElements accountsPanelElements = new AccountsPanelElements();
-			accountsPanelElements.clickFirstAccountLink();
-			return accountsPanelElements;
-		}
-		
-		public void showsSalaryAccount() {
-			specify(textContainsInPage("Salary account"));
-		}
-	}
+
+    public class PanelWhenAccountLinkIsClicked {
+        public AccountsPanelElements create() {
+            openBaseUrl();
+            AccountsPanelElements accountsPanelElements = new AccountsPanelElements();
+            accountsPanelElements.clickFirstAccountLink();
+            return accountsPanelElements;
+        }
+
+        public void showsSalaryAccount() {
+            specify(textContainsInPage("Salary account"));
+        }
+    }
 }

@@ -25,32 +25,32 @@ import org.laughingpanda.kansanpankki.domain.Account;
 import org.laughingpanda.kansanpankki.domain.AccountRepository;
 
 final class AccountsDataProvider implements IDataProvider<Account> {
-	private AccountRepository accountRepository;
-	
-	public AccountsDataProvider(AccountRepository accountRepository) {
-		this.accountRepository = accountRepository;
-	}
+    private AccountRepository accountRepository;
 
-	@Override
+    public AccountsDataProvider(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
+
+    @Override
     public Iterator<Account> iterator(int first, int count) {
-	    return allAccounts().iterator();
-	}
+        return allAccounts().iterator();
+    }
 
-	@Override
+    @Override
     public int size() {
-	    return allAccounts().size();
-	}
+        return allAccounts().size();
+    }
 
-	@Override
+    @Override
     public IModel<Account> model(Account object) {
-	    return new Model<Account>(object);
-	}
+        return new Model<Account>(object);
+    }
 
-	@Override
+    @Override
     public void detach() {
-	}
+    }
 
-	private List<Account> allAccounts() {
-		return accountRepository.findAllAccounts();
-	}
+    private List<Account> allAccounts() {
+        return accountRepository.findAllAccounts();
+    }
 }

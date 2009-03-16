@@ -18,7 +18,6 @@ package org.laughingpanda.kansanpankki.jdave;
 
 import jdave.webdriver.WebDriverGroupRunner;
 import jdave.webdriver.WebDriverHolder;
-
 import org.laughingpanda.kansanpankki.jetty.WebDriverJettyStarter;
 
 /**
