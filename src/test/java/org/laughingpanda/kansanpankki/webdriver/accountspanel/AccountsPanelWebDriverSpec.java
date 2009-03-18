@@ -66,7 +66,7 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
         }
         
         public void showsTargetAccountNumbers() {
-            context.getTransferAmounTextBoxOfRow(2).type("100");
+            context.getTransferAmountTextBoxOfRow(2).type("100");
             List<WebElement> transferTexts = context.getTransferLinkTexts();
 			specify(transferTexts.get(0).getText(), does.equal("Transfer 100 euros to 9500-12345"));
 		}

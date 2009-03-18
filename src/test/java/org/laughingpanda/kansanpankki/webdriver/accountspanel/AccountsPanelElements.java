@@ -78,7 +78,7 @@ public class AccountsPanelElements extends BaseElements {
         return findWebElementByName("accountsPanel:accounts:" + rowNumber + ":amountToTransfer");
     }
 
-    public TextBox getTransferAmounTextBoxOfRow(int rowNumber) {
+    public TextBox getTransferAmountTextBoxOfRow(int rowNumber) {
         return Find.textBox(By.name("accountsPanel:accounts:" + rowNumber + ":amountToTransfer"));
     }
 
