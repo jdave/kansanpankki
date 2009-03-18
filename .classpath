@@ -65,7 +65,7 @@
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-extensions/1.4-rc2/wicket-extensions-1.4-rc2.jar" sourcepath="M2_REPO/org/apache/wicket/wicket-extensions/1.4-rc2/wicket-extensions-1.4-rc2-sources.jar">
     <attributes>
-      <attribute value="d/org/apache/wicket/wicket-extensions/1.4-rc2/wicket-extensions-1.4-rc2-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="M2_REPO/org/apache/wicket/wicket-extensions/1.4-rc2/wicket-extensions-1.4-rc2-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
 </classpath>
