@@ -26,10 +26,14 @@ import org.laughingpanda.kansanpankki.domain.Money;
 public class AccountDao implements AccountRepository, Serializable {
     private List<Account> accounts = new ArrayList<Account>();
     {
-        accounts.add(new Account("9500-12345"));
+        Account emptyAccount = new Account("9500-12345");
+        accounts.add(emptyAccount);
         Account accountWithMoney = new Account("9500-56789");
         accountWithMoney.save(Money.euros(9500));
         accounts.add(accountWithMoney);
+        accountWithMoney.transfer(Money.euros(5000)).to(emptyAccount);
+        emptyAccount.transfer(Money.euros(2000)).to(accountWithMoney);
+        emptyAccount.transfer(Money.euros(3000)).to(accountWithMoney);
     }
 
     @Override
