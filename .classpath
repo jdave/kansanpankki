@@ -1,11 +1,12 @@
 <classpath>
   <classpathentry kind="src" path="src/main/java"/>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
   <classpathentry kind="src" path="src/test/java" output="target/test-classes"/>
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="var" path="M2_REPO/beaninject/beaninject/0.3/beaninject-0.3.jar" sourcepath="M2_REPO/beaninject/beaninject/0.3/beaninject-0.3-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/thrantal/.m2/repository/beaninject/beaninject/0.3/beaninject-0.3-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="M2_REPO/beaninject/beaninject/0.3/beaninject-0.3-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.jar" sourcepath="M2_REPO/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3-sources.jar"/>
@@ -13,22 +14,22 @@
   <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-library/1.1/hamcrest-library-1.1.jar" sourcepath="M2_REPO/org/hamcrest/hamcrest-library/1.1/hamcrest-library-1.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/jdave/jdave-core/1.2-SNAPSHOT/jdave-core-1.2-SNAPSHOT.jar" sourcepath="M2_REPO/org/jdave/jdave-core/1.2-SNAPSHOT/jdave-core-1.2-SNAPSHOT-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/thrantal/.m2/repository/org/jdave/jdave-core/1.2-SNAPSHOT/jdave-core-1.2-SNAPSHOT-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="M2_REPO/org/jdave/jdave-core/1.2-SNAPSHOT/jdave-core-1.2-SNAPSHOT-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/jdave/jdave-junit4/1.2-SNAPSHOT/jdave-junit4-1.2-SNAPSHOT.jar" sourcepath="M2_REPO/org/jdave/jdave-junit4/1.2-SNAPSHOT/jdave-junit4-1.2-SNAPSHOT-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/thrantal/.m2/repository/org/jdave/jdave-junit4/1.2-SNAPSHOT/jdave-junit4-1.2-SNAPSHOT-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="M2_REPO/org/jdave/jdave-junit4/1.2-SNAPSHOT/jdave-junit4-1.2-SNAPSHOT-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/jdave/jdave-wicket/1.2-SNAPSHOT/jdave-wicket-1.2-SNAPSHOT.jar" sourcepath="M2_REPO/org/jdave/jdave-wicket/1.2-SNAPSHOT/jdave-wicket-1.2-SNAPSHOT-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/thrantal/.m2/repository/org/jdave/jdave-wicket/1.2-SNAPSHOT/jdave-wicket-1.2-SNAPSHOT-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="M2_REPO/org/jdave/jdave-wicket/1.2-SNAPSHOT/jdave-wicket-1.2-SNAPSHOT-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/jdave/jdave-wicket-webdriver/1.2-SNAPSHOT/jdave-wicket-webdriver-1.2-SNAPSHOT.jar" sourcepath="M2_REPO/org/jdave/jdave-wicket-webdriver/1.2-SNAPSHOT/jdave-wicket-webdriver-1.2-SNAPSHOT-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/thrantal/.m2/repository/org/jdave/jdave-wicket-webdriver/1.2-SNAPSHOT/jdave-wicket-webdriver-1.2-SNAPSHOT-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="M2_REPO/org/jdave/jdave-wicket-webdriver/1.2-SNAPSHOT/jdave-wicket-webdriver-1.2-SNAPSHOT-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/mortbay/jetty/jetty/6.1.1/jetty-6.1.1.jar" sourcepath="M2_REPO/org/mortbay/jetty/jetty/6.1.1/jetty-6.1.1-sources.jar"/>
@@ -38,16 +39,17 @@
   <classpathentry kind="var" path="M2_REPO/org/jmock/jmock-legacy/2.4.0/jmock-legacy-2.4.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/json/json/20080701/json-20080701.jar" sourcepath="M2_REPO/org/json/json/20080701/json-20080701-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/thrantal/.m2/repository/org/json/json/20080701/json-20080701-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="M2_REPO/org/json/json/20080701/json-20080701-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/4.5/junit-4.5.jar" sourcepath="M2_REPO/junit/junit/4.5/junit-4.5-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit-dep/4.5/junit-dep-4.5.jar" sourcepath="M2_REPO/junit/junit-dep/4.5/junit-dep-4.5-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.13/log4j-1.2.13.jar" sourcepath="M2_REPO/log4j/log4j/1.2.13/log4j-1.2.13-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/mx4j/mx4j/3.0.1/mx4j-3.0.1.jar" sourcepath="M2_REPO/mx4j/mx4j/3.0.1/mx4j-3.0.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/mx4j/mx4j-tools/3.0.1/mx4j-tools-3.0.1.jar" sourcepath="M2_REPO/mx4j/mx4j-tools/3.0.1/mx4j-tools-3.0.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/objenesis/objenesis/1.0/objenesis-1.0.jar" sourcepath="M2_REPO/org/objenesis/objenesis/1.0/objenesis-1.0-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/thrantal/.m2/repository/org/objenesis/objenesis/1.0/objenesis-1.0-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="M2_REPO/org/objenesis/objenesis/1.0/objenesis-1.0-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar" sourcepath="M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4-sources.jar"/>
@@ -58,12 +60,12 @@
   <classpathentry kind="var" path="M2_REPO/org/openqa/selenium/webdriver/webdriver-firefox/1.0-SNAPSHOT/webdriver-firefox-1.0-SNAPSHOT.jar" sourcepath="M2_REPO/org/openqa/selenium/webdriver/webdriver-firefox/1.0-SNAPSHOT/webdriver-firefox-1.0-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket/1.4-rc2/wicket-1.4-rc2.jar" sourcepath="M2_REPO/org/apache/wicket/wicket/1.4-rc2/wicket-1.4-rc2-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/thrantal/.m2/repository/org/apache/wicket/wicket/1.4-rc2/wicket-1.4-rc2-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="M2_REPO/org/apache/wicket/wicket/1.4-rc2/wicket-1.4-rc2-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-extensions/1.4-rc2/wicket-extensions-1.4-rc2.jar" sourcepath="M2_REPO/org/apache/wicket/wicket-extensions/1.4-rc2/wicket-extensions-1.4-rc2-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/thrantal/.m2/repository/org/apache/wicket/wicket-extensions/1.4-rc2/wicket-extensions-1.4-rc2-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="d/org/apache/wicket/wicket-extensions/1.4-rc2/wicket-extensions-1.4-rc2-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
 </classpath>
