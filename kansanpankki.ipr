@@ -213,7 +213,7 @@
   </component>
   <component name="ProjectFileVersion" converted="true" />
   <component name="ProjectKey">
-    <option name="state" value="http://www.laughingpanda.org/svn/kansanpankki/trunk/kansanpankki.ipr" />
+    <option name="state" value="http://www.laughingpanda.org/svn/kansanpankki/tags/04_initial_money_transfer/kansanpankki.ipr" />
   </component>
   <component name="ProjectModuleManager">
     <modules>
@@ -266,6 +266,34 @@
       <option name="ADDITIONAL_CLASS_PATH" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+    <configuration default="false" name="KansanpankkiUnitSpecsSuite" type="JUnit" factoryName="JUnit" enabled="false" merge="false" sample_coverage="true" runner="emma">
+      <pattern>
+        <option name="PATTERN" value="org.laughingpanda.kansanpankki.jdave.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+      <module name="kansanpankki" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="org.laughingpanda.kansanpankki.jdave" />
+      <option name="MAIN_CLASS_NAME" value="org.laughingpanda.kansanpankki.jdave.KansanpankkiUnitSpecsSuite" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="ADDITIONAL_CLASS_PATH" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
       </option>
       <envs />
       <RunnerSettings RunnerId="Run" />
