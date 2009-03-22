@@ -16,6 +16,7 @@
  */
 package org.laughingpanda.kansanpankki.domain;
 
+import java.util.List;
 import jdave.Block;
 import jdave.Specification;
 import jdave.contract.EqualsHashCodeContract;
@@ -132,6 +133,50 @@ public class AccountSpec extends Specification<Account> {
         public void becomesEmptyAfterWithDrawing50Euros() {
             context.withdraw(Money.euros(50));
             specify(context.isEmpty());
+        }
+    }
+
+    public class AccountWithTransfers {
+        private Account sourceAccount = new Account("1234-5678").save(Money.euros(1000));
+        private Account targetAccount = new Account("9876-5432");
+
+        public Account create() {
+            Account account = new Account("1111-2222");
+            sourceAccount.transfer(Money.euros(500)).to(account);
+            account.transfer(Money.euros(100)).to(targetAccount);
+            return account;
+        }
+
+        public void containsTransferHistory() {
+            List<AccountTransaction> transactions = context.getTransactions();
+            specify(transactions.size(), does.equal(2));
+
+            AccountTransaction save = transactions.get(0);
+            specify(save.getSource(), does.equal(sourceAccount));
+            specify(save.getTarget(), does.equal(context));
+            specify(save.getAmount(), does.equal(Money.euros(500)));
+
+            AccountTransaction withdraw = transactions.get(1);
+            specify(withdraw.getSource(), does.equal(context));
+            specify(withdraw.getTarget(), does.equal(targetAccount));
+            specify(withdraw.getAmount(), does.equal(Money.euros(100)));
+        }
+
+        public void transferHistoryIsRecordedOnBothAccounts() {
+            List<AccountTransaction> sourceAccountTransactions = sourceAccount.getTransactions();
+            specify(sourceAccountTransactions.size(), does.equal(1));
+
+            AccountTransaction save = sourceAccountTransactions.get(0);
+            specify(save.getSource(), does.equal(sourceAccount));
+            specify(save.getTarget(), does.equal(context));
+            specify(save.getAmount(), does.equal(Money.euros(500)));
+
+            List<AccountTransaction> targetAccountTransactions = targetAccount.getTransactions();
+            specify(targetAccountTransactions.size(), does.equal(1));
+            AccountTransaction withdraw = targetAccountTransactions.get(0);
+            specify(withdraw.getSource(), does.equal(context));
+            specify(withdraw.getTarget(), does.equal(targetAccount));
+            specify(withdraw.getAmount(), does.equal(Money.euros(100)));
         }
     }
 }
