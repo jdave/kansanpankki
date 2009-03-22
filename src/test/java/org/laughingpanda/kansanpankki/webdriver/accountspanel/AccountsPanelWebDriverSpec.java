@@ -81,7 +81,7 @@ public class AccountsPanelWebDriverSpec extends KansanpankkiWebDriverSpecificati
         }
 
         public void showsSalaryAccount() {
-            specify(textContainsInPage("Salary account"));
+            specify(textContainsInPage("KansanPankki - Salary account"));
         }
     }
 }
