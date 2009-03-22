@@ -285,22 +285,22 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$M2_REPO$/org/openqa/selenium/webdriver/webdriver-firefox/1.0-SNAPSHOT/webdriver-firefox-1.0-SNAPSHOT.jar!/" />
+          <root url="jar://$M2_REPO$/org/openqa/selenium/webdriver/webdriver-firefox/0.6.870/webdriver-firefox-0.6.870.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$M2_REPO$/org/openqa/selenium/webdriver/webdriver-firefox/1.0-SNAPSHOT/webdriver-firefox-1.0-SNAPSHOT-sources.jar!/" />
+          <root url="jar://$M2_REPO$/org/openqa/selenium/webdriver/webdriver-firefox/0.6.870/webdriver-firefox-0.6.870-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$M2_REPO$/org/openqa/selenium/webdriver/webdriver-common/1.0-SNAPSHOT/webdriver-common-1.0-SNAPSHOT.jar!/" />
+          <root url="jar://$M2_REPO$/org/openqa/selenium/webdriver/webdriver-common/0.6.870/webdriver-common-0.6.870.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$M2_REPO$/org/openqa/selenium/webdriver/webdriver-common/1.0-SNAPSHOT/webdriver-common-1.0-SNAPSHOT-sources.jar!/" />
+          <root url="jar://$M2_REPO$/org/openqa/selenium/webdriver/webdriver-common/0.6.870/webdriver-common-0.6.870-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
