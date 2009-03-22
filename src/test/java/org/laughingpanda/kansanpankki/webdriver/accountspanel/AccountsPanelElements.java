@@ -16,13 +16,13 @@
  */
 package org.laughingpanda.kansanpankki.webdriver.accountspanel;
 
-import java.util.List;
+import javax.swing.text.html.HTML;
 
+import java.util.List;
 import jdave.webdriver.WebDriverHolder;
 import jdave.webdriver.elements.Find;
 import jdave.webdriver.elements.Link;
 import jdave.webdriver.elements.TextBox;
-
 import org.laughingpanda.kansanpankki.webdriver.BaseElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -33,12 +33,12 @@ import org.openqa.selenium.WebElement;
 public class AccountsPanelElements extends BaseElements {
     public List<WebElement> getAccountLabels() {
         WebElement accountList = getAccounts();
-        return accountList.findElements(By.id("account"));
+        return accountList.findElements(By.name("accountName"));
     }
 
     public List<WebElement> getAccountLinks() {
         WebElement accountList = getAccounts();
-        return accountList.findElements(By.id("account"));
+        return accountList.findElements(By.tagName(HTML.Tag.A.toString()));
     }
 
     public List<WebElement> getBalanceLabels() {
