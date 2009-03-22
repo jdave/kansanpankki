@@ -16,7 +16,9 @@
  */
 package org.laughingpanda.kansanpankki.jetty;
 
-import java.net.BindException;
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 /**
  * @author Marko Sibakov / Reaktor Innovations Oy
@@ -30,17 +32,30 @@ public class WebDriverJettyStarter extends Jetty {
 
     @Override
     public void start() {
-        try {
-            super.start();
-        } catch (BindException e) {
-            System.out.println("Jetty already running in port " + getPort());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        if (!isServerRunning()) {
+            try {
+                super.start();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Server already running.");
         }
     }
 
     @Override
     public int getPort() {
         return PORT;
+    }
+
+    private boolean isServerRunning() {
+        try {
+            new Socket("localhost", getPort());
+            return true;
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            return false;
+        }
     }
 }
