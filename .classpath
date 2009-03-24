@@ -37,6 +37,11 @@
   <classpathentry kind="var" path="M2_REPO/org/mortbay/jetty/jetty-util/6.1.1/jetty-util-6.1.1.jar" sourcepath="M2_REPO/org/mortbay/jetty/jetty-util/6.1.1/jetty-util-6.1.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/jmock/jmock/2.4.0/jmock-2.4.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/jmock/jmock-legacy/2.4.0/jmock-legacy-2.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/json/json/20080701/json-20080701.jar" sourcepath="M2_REPO/org/json/json/20080701/json-20080701-sources.jar">
+    <attributes>
+      <attribute value="M2_REPO/org/json/json/20080701/json-20080701-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.5/junit-4.5.jar" sourcepath="M2_REPO/junit/junit/4.5/junit-4.5-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit-dep/4.5/junit-dep-4.5.jar" sourcepath="M2_REPO/junit/junit-dep/4.5/junit-dep-4.5-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.13/log4j-1.2.13.jar" sourcepath="M2_REPO/log4j/log4j/1.2.13/log4j-1.2.13-sources.jar"/>
