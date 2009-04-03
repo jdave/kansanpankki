@@ -127,7 +127,8 @@ public class AccountsViewSpec extends ComponentSpecification<AccountsView, Void>
     protected AccountsView newComponent(String id, IModel<Void> iModel) {
         accountWithMoney.save(Money.euros(9500));
         checking(new Expectations() {{
-            atLeast(1).of(repository).findAllAccounts(); will(returnValue(Arrays.asList(emptyAccount, accountWithMoney)));
+            atLeast(1).of(repository).findAllAccounts(); 
+            will(returnValue(Arrays.asList(emptyAccount, accountWithMoney)));
         }});
         AccountsView accountsView = new AccountsView("accounts", new AccountsDataProvider(repository));
         AccountsPanel accountsPanel = new AccountsPanel("accountsPanel");
