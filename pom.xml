@@ -85,19 +85,19 @@
     <pluginRepository>
       <id>laughing-panda</id>
       <name>Laughing Panda</name>
-      <url>http://www.laughingpanda.org/maven2/</url>
+      <url>http://maven.laughingpanda.org/maven2/</url>
     </pluginRepository>
   </pluginRepositories>
   <repositories>
     <repository>
       <id>laughing-panda</id>
       <name>Laughing Panda</name>
-      <url>http://www.laughingpanda.org/maven2</url>
+      <url>http://maven.laughingpanda.org/maven2</url>
     </repository>
     <repository>
       <id>laughing-panda-snapshots</id>
       <name>Laughing Panda snapshot repo for fresh JDave snapshots</name>
-      <url>http://www.laughingpanda.org/maven2/snapshots/</url>
+      <url>http://maven.laughingpanda.org/maven2/snapshots/</url>
     </repository>
   </repositories>
   <dependencies>
